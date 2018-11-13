@@ -4,7 +4,7 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 const routes: Routes = [
     { path: '', loadChildren: './browse/browse.module#BrowseModule', pathMatch: 'full' },
     { path: 'about-us', loadChildren: './about-us/about-us.module#AboutUsModule' },
-    { path: 'authentication', loadChildren: './authentication/authentication.module#AuthenticationModule' },
+    { path: 'auth', loadChildren: './authentication/authentication.module#AuthenticationModule' },
     { path: 'bacon', loadChildren: './bacon/bacon.module#BaconModule' },
     { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
     { path: '**', redirectTo: '' }
