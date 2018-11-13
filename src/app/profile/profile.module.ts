@@ -7,7 +7,6 @@ import { OrdersComponent } from './orders/orders.component';
 import { PaymentComponent } from './payment/payment.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProfileComponent } from './profile.component';
-import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   declarations: [
@@ -20,10 +19,6 @@ import { NavbarModule } from '../navbar/navbar.module';
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule,
-    NavbarModule
-  ],
-  exports: [
     ProfileRoutingModule
   ]
 })

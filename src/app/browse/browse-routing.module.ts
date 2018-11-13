@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import {Routes, RouterModule } from'@angular/router';
+import {Routes, RouterModule } from '@angular/router';
 import { BrowseComponent } from './browse.component';
 
-const routes: Routes=[
+const routes: Routes = [
   { path: '', component: BrowseComponent },
   { path: '**', redirectTo: '' }
-]
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

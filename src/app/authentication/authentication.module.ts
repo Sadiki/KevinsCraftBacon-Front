@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AuthenticationRoutingModule } from './authentication-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './register/registration.component';
-import { NavbarModule } from '../navbar/navbar.module';
 
 @NgModule({
   declarations: [
@@ -12,10 +11,6 @@ import { NavbarModule } from '../navbar/navbar.module';
   ],
   imports: [
     CommonModule,
-    AuthenticationRoutingModule,
-    NavbarModule
-  ],
-  exports: [
     AuthenticationRoutingModule
   ]
 })
