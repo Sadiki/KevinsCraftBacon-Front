@@ -1,21 +1,16 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { User } from '../models/User';
+import { Bacon } from '../models/Bacon';
+import { ChuckNorris } from '../models/ChuckNorris';
 import { environment } from '../../../environments/environment';
-
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-  })
-};
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class BaconService {
 
   constructor(private http: HttpClient) { }
 
@@ -32,13 +27,15 @@ export class UserService {
     return throwError('Something went wrong; please try again later.');
   }
 
-  login(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'login', [user.usr, user.pwd], httpOptions)
-    .pipe(catchError(this.handleError));
+  getAllBacon(): Observable<Bacon[]> {
+    return this.http.get<Bacon[]>(environment.url).pipe(catchError(this.handleError));
   }
 
-  register(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'register', user, httpOptions)
-    .pipe(catchError(this.handleError));
+  fatSecret() {
+    //
+  }
+
+  chuckNorris() {
+    return this.http.get<ChuckNorris>('https://api.chucknorris.io/jokes/random');
   }
 }
