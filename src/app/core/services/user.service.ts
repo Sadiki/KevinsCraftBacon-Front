@@ -33,7 +33,12 @@ export class UserService {
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'login', user, httpOptions)
+    return this.http.post<User>(environment.url + 'login', [user.usr, user.pwd], httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  register(user: User): Observable<User> {
+    return this.http.post<User>(environment.url + 'register', user, httpOptions)
     .pipe(catchError(this.handleError));
   }
 }
