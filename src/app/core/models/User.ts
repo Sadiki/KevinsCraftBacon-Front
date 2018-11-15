@@ -1,6 +1,3 @@
-import { Cart } from './Cart';
-import { CreditCard } from './CreditCard';
-
 export interface User {
     id: number;
     fname: string;
