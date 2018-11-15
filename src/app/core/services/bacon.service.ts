@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
+import { Bacon } from '../models/Bacon';
 import { ChuckNorris } from '../models/ChuckNorris';
 import { environment } from '../../../environments/environment';
 
@@ -26,8 +27,8 @@ export class BaconService {
     return throwError('Something went wrong; please try again later.');
   }
 
-  getAllBacon() {
-    //
+  getAllBacon(): Observable<Bacon[]> {
+    return this.http.get<Bacon[]>(environment.url).pipe(catchError(this.handleError));
   }
 
   fatSecret() {
