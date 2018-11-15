@@ -11,6 +11,6 @@ export class BaconizePipe implements PipeTransform {
     }
 
     const regex = /Chuck Norris|Chuck|Norris/;
-    return value.replace(regex, 'Bacon');
+    return value.replace(regex, 'Bacon').replace(/CN/, 'B');
   }
 }
