@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  url: 'KCraftBacon-env.3mh3qudecg.us-east-1.elasticbeanstalk.com'
 };
 
 /*
