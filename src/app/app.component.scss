@@ -1,0 +1,46 @@
+#nav-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+#sidenav{
+    width: 15%;
+}
+
+#menu-toggle{
+border-bottom: 3px solid;
+margin-left:31%;
+padding-bottom: 3%;
+margin-bottom:14%;
+}
+
+#menu-toggle i {
+    width: 50px;
+    height: 50px;
+    font-size: 50px;
+}
+
+.nav-item{
+    font-size: 25px;
+
+    margin-left: 33%;
+}
+
+.nav-item-container:hover{
+    background-color: 	#F5F5F5;
+}
+
+.nav-item-container{
+    border-bottom: 3px solid;
+    padding-bottom: 10%;
+    padding-top:10%;
+    margin: auto 0;
+}
+
+.nav-item-container a{
+    text-decoration: none;
+    color:black;
+}
