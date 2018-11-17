@@ -1,18 +1,22 @@
-<mat-sidenav-container id='nav-container'>
-    <mat-sidenav id='sidenav' #sidenav opened="true" mode="side">
-        <button mat-button (click)="sidenav.toggle()" id="menu-toggle"><i  class="material-icons">
-                shopping_basket
-        </i></button>
-        <div class='nav-item-container'> <a  routerLink='/profile'><div id='profile-nav' class='nav-item'>Profile</div></a></div> 
-      <div class='nav-item-container'><a routerLink='/auth/login'><div id='login-nav' class='nav-item'>Login</div></a></div> 
-      <div class='nav-item-container'><a routerLink='/auth/register'><div id='register-nav' class='nav-item'>Register</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink='/bacon/cart'><div id='cart-nav' class='nav-item'>Cart</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink='/profile/orders'><div id='orders-nav' class='nav-item'>Orders</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink=''><div id='logout-nav' class='nav-item'>Logout</div></a></div> 
-    </mat-sidenav>
+<ng-container class="content-container">
+    <mat-toolbar>
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <i class="material-icons">menu</i>
+        </button>
 
-    <button mat-button (click)="sidenav.toggle()"><i class="material-icons">
-            shopping_basket
-            </i></button>
-<router-outlet id='router-out'></router-outlet>
-</mat-sidenav-container>
+        <h1>Kevin's Craft Bacon</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container id='nav-container'>
+        <mat-sidenav id='sidenav' #sidenav opened="false" mode="side">
+            <div class='nav-item-container'><a routerLink='/profile'><div id='profile-nav' class='nav-item'>Profile</div></a></div> 
+            <div class='nav-item-container'><a routerLink='/auth/login'><div id='login-nav' class='nav-item'>Login</div></a></div> 
+            <div class='nav-item-container'><a routerLink='/auth/register'><div id='register-nav' class='nav-item'>Register</div></a></div> 
+            <div class='nav-item-container'><a routerLink='/bacon/cart'><div id='cart-nav' class='nav-item'>Cart</div></a></div> 
+            <div class='nav-item-container'><a routerLink='/profile/orders'><div id='orders-nav' class='nav-item'>Orders</div></a></div> 
+            <div class='nav-item-container'><a routerLink=''><div id='logout-nav' class='nav-item'>Logout</div></a></div> 
+        </mat-sidenav>
+
+        <router-outlet id='router-out'></router-outlet>
+    </mat-sidenav-container>
+</ng-container>

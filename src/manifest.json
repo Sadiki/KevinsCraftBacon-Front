@@ -1,8 +1,8 @@
 {
     "name": "Kevin's Craft Bacon",
     "short_name": "KCB",
-    "theme_color": "#9a0007",
-    "background_color": "#212121",
+    "theme_color": "#263238",
+    "background_color": "#ECEFF1",
     "display": "standalone",
     "scope": "/",
     "start_url": "/"
