@@ -14,10 +14,6 @@ mat-toolbar {
 
     button {
         background: $toolbar;
-
-        i {
-            color: $light-grey;
-        }
     }
 
     h1 {
@@ -42,25 +38,28 @@ mat-sidenav-container {
         margin: auto;
         background: $blue-grey;
 
-        .nav-item-container {
+        a {
+            border-radius: 0;
+            text-decoration: none;
             padding: 15% 1em;
+            width: inherit;
 
-            a {
-                text-decoration: none;
-
-                .nav-item {
-                    color: $light-grey;
-                    font-family: 'Montserrat', sans-serif;
-                    font-size: 160%;
-                    font-weight: bold;
-                    margin: 0 auto;
-                    width: fit-content;
-                }
+            .nav-item {
+                color: $light-grey;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 160%;
+                font-weight: bold;
+                margin: 0 auto;
             }
         }
 
-        .nav-item-container:hover {
+        a:hover {
             background-color: $dark-grey;
         }
     }
+}
+
+i {
+    color: $light-grey;
+    font-size: 48px;
 }

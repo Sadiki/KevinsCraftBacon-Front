@@ -9,12 +9,18 @@
 
     <mat-sidenav-container id="nav-container">
         <mat-sidenav id="sidenav" #sidenav opened="false" mode="side">
-            <div class="nav-item-container" *ngIf="sessionUser"><a routerLink="/profile"><div id="profile-nav" class="nav-item">Profile</div></a></div> 
-            <div class="nav-item-container" *ngIf="!sessionUser"><a routerLink="/auth/login"><div id="login-nav" class="nav-item">Login</div></a></div> 
-            <div class="nav-item-container" *ngIf="!sessionUser"><a routerLink="/auth/register"><div id="register-nav" class="nav-item">Register</div></a></div> 
-            <div class="nav-item-container" *ngIf="sessionUser"><a routerLink="/bacon/cart"><div id="cart-nav" class="nav-item">Cart</div></a></div> 
-            <div class="nav-item-container" *ngIf="sessionUser"><a routerLink="/profile/orders"><div id="orders-nav" class="nav-item">Orders</div></a></div> 
-            <div class="nav-item-container" *ngIf="sessionUser"><a routerLink=""><div id="logout-nav" class="nav-item">Logout</div></a></div>
+            <a mat-button routerLink=""><i class="material-icons">home</i></a>
+            <a mat-button routerLink="/profile" *ngIf="sessionUser"><div id="profile-nav" class="nav-item">Profile</div></a>
+            <br>
+            <a mat-button routerLink="/auth/login" *ngIf="!sessionUser"><div id="login-nav" class="nav-item">Login</div></a>
+            <br>
+            <a mat-button routerLink="/auth/register" *ngIf="!sessionUser"><div id="register-nav" class="nav-item">Register</div></a>
+            <br>
+            <a mat-button routerLink="/bacon/cart" *ngIf="sessionUser"><div id="cart-nav" class="nav-item">Cart</div></a>
+            <br>
+            <a mat-button routerLink="/profile/orders" *ngIf="sessionUser"><div id="orders-nav" class="nav-item">Orders</div></a>
+            <br>
+            <a mat-button routerLink="" *ngIf="sessionUser"><div id="logout-nav" class="nav-item">Logout</div></a>
         </mat-sidenav>
 
         <router-outlet id="router-out"></router-outlet>
