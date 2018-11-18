@@ -7,7 +7,7 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'KevinsCraftBacon';
-
+  sessionUser = localStorage.getItem('user');
   @ViewChild('sidenav') sidenav;
 
   // Esc key toggles sidenav

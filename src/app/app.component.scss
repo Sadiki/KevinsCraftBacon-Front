@@ -43,15 +43,16 @@ mat-sidenav-container {
         background: $blue-grey;
 
         .nav-item-container {
-            padding: 10% 1em;
+            padding: 15% 1em;
 
             a {
                 text-decoration: none;
 
                 .nav-item {
                     color: $light-grey;
-                    font-family: 'Montserrat Subrayada', sans-serif;
+                    font-family: 'Montserrat', sans-serif;
                     font-size: 160%;
+                    font-weight: bold;
                     margin: 0 auto;
                     width: fit-content;
                 }
