@@ -1,4 +1,4 @@
-<ng-container class="content-container">
+<ng-container class="content-container" (keypress)="handleKeypress($event)">
     <mat-toolbar>
         <button mat-icon-button (click)="sidenav.toggle()">
             <i class="material-icons">menu</i>

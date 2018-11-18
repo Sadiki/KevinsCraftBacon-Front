@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'KevinsCraftBacon';
+
+  @ViewChild('sidenav') sidenav;
+
+  // Esc key toggles sidenav
+  @HostListener('document:keydown', ['$event'])
+  handleKeypress(event: KeyboardEvent) {
+    if (event.key == 'Escape') {
+      this.sidenav.toggle();
+    }
+  }
 }
