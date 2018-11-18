@@ -1,44 +1,54 @@
 <div id="registration-container">
-  <div id="username">
-    Username:
-    <input type="text" />
-  </div>
-  <div id="password">
-    Password:
-    <input type="password" />
-  </div>
-  <div id="first-name">
-    First Name:
-    <input type="text" />
-  </div>
-  <div id="last-name">
-    Last Name:
-    <input type="text" />
-  </div>
-  <div id="email">
-    Email:
-    <input type="email" />
-  </div>
-  <div id="phone-no">
-    Phone #:
-    <input type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" />
-  </div>
-  <div id="address">
-    Street Address:
-    <input type="text" />
-  </div>
-  <div id="city">
-    City:
-    <input type="text" />
-  </div>
-  <div id="state">
-    State:
-    <input type="text" />
-  </div>
-  <div id="zip">
-    Zip:
-    <input type="number" />
-  </div>
-  <button type="button" id="registration-btn">Submit</button>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registration</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Username" id="username" [(ngModel)]="user.usr">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="user.pwd">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="First Name" id="first-name" [(ngModel)]="user.fname">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Last Name" id="last-name" [(ngModel)]="user.lname">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="email" placeholder="Email" id="email" [(ngModel)]="user.email">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+          <input matInput type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" placeholder="Phone #" id="phone-no" [(ngModel)]="user.phone">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Address" id="address" [(ngModel)]="user.address">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="City" id="city" [(ngModel)]="user.city">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="State" id="state" [(ngModel)]="user.state">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Zipcode" id="zip" [(ngModel)]="user.zip">
+      </mat-form-field>
+      <br>
+      <button mat-flat-button type="button" (click)="register()">Register</button>
+      <br>
+      <a mat-button routerLink="/auth/login">Login</a>
+    </mat-card-content>
+  </mat-card>
 </div>
 
