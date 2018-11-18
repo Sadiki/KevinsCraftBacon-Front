@@ -13,9 +13,11 @@ import { UserService } from '../../core/services/user.service';
 })
 export class LoginComponent implements OnInit, OnDestroy {
   isValid = true;
-  private sessionUser = localStorage.getItem('user');
-  private subscription: Subscription;
-  private user: User;
+  sessionUser = localStorage.getItem('user');
+  subscription: Subscription;
+  user: User;
+  usr: string;
+  pwd: string;
 
   constructor(private userService: UserService, private router: Router, private location: Location) { }
 
@@ -26,7 +28,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    this.userService.login(this.user).subscribe((user) => {
+    this.user = {usr: this.usr, pwd: this.pwd};
+    this.subscription = this.userService.login(this.user).subscribe((user) => {
       if (!user) {
         this.isValid = false;
       } else {
@@ -37,6 +40,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }
