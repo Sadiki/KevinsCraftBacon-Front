@@ -15,9 +15,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   isValid = true;
   sessionUser = localStorage.getItem('user');
   subscription: Subscription;
-  user: User;
-  usr: string;
-  pwd: string;
+  user: User = {};
 
   constructor(private userService: UserService, private router: Router, private location: Location) { }
 
@@ -28,7 +26,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   login() {
-    this.user = {usr: this.usr, pwd: this.pwd};
     this.subscription = this.userService.login(this.user).subscribe((user) => {
       if (!user) {
         this.isValid = false;

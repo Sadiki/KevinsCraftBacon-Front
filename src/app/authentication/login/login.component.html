@@ -6,11 +6,11 @@
   
     <mat-card-content>
       <mat-form-field appearance="outline">
-        <input matInput type="text" placeholder="Username" id="username" [(ngModel)]="usr">
+        <input matInput type="text" placeholder="Username" id="username" [(ngModel)]="user.usr">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
-        <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="pwd">
+        <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="user.pwd">
       </mat-form-field>
       <br>
       <button mat-flat-button type="button" (click)="login()">Login</button>
