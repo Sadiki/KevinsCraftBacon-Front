@@ -23,7 +23,7 @@ mat-toolbar {
     h1 {
         color: $light-grey;
         font-family: 'Montserrat Subrayada', sans-serif;
-        font-size: 30px;
+        font-size: 250%;
         margin: 0 auto;
     }
 }
@@ -39,12 +39,11 @@ mat-sidenav-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 12%;
+        margin: auto;
         background: $blue-grey;
 
         .nav-item-container {
-            padding-bottom: 10%;
-            padding-top: 10%;
+            padding: 10% 1em;
 
             a {
                 text-decoration: none;
@@ -52,7 +51,7 @@ mat-sidenav-container {
                 .nav-item {
                     color: $light-grey;
                     font-family: 'Montserrat Subrayada', sans-serif;
-                    font-size: 25px;
+                    font-size: 160%;
                     margin: 0 auto;
                     width: fit-content;
                 }
