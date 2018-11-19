@@ -1,12 +1,12 @@
 export interface User {
-    id?: number;
-    fname?: string;
-    lname?: string;
-    usr: string;
-    pwd: string;
+    cust_id?: number;
+    firstName?: string;
+    lastName?: string;
+    username: string;
+    password: string;
     email?: string;
-    phone?: string;
-    address?: string;
+    phoneNumber?: string;
+    streetAddress?: string;
     city?: string;
     state?: string;
     zip?: string;

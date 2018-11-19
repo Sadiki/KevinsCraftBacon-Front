@@ -1,10 +1,6 @@
 import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { UserService } from '../core/services/user.service';
-import { User } from '../core/models/User';
-import { Router } from '@angular/router';
-import { environment } from '../../environments/environment';
 import { Subscription } from 'rxjs';
-import { subscribeOn } from 'rxjs/operators';
 
 @Component({
   selector: 'app-admin',
@@ -19,16 +15,14 @@ export class AdminComponent implements OnInit {
   displayAllUsers(){
     let admincontainer = document.getElementById('admin-container')
     let ulContainer = document.createElement('ul');
-    let liContainer = document.createElement('li');
-  
-
-    console.log(environment.url);
+    
     
     this.subscription = this.userService.getAllUsers().subscribe( resp=>{ 
         for(let i = 0; i < resp.length; i++){
-          let name = resp[i].fname;
-          liContainer.innerHTML = name;
-          ulContainer.appendChild(liContainer);
+          let liContainer = document.createElement('li');
+          liContainer.innerHTML = resp[i].firstName;
+          console.log(resp[i].firstName);
+          ulContainer.append(liContainer);
         }
         
         admincontainer.appendChild(ulContainer);

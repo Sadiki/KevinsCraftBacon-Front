@@ -33,7 +33,7 @@ export class UserService {
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'login', [user.usr, user.pwd], httpOptions)
+    return this.http.post<User>(environment.url + 'login', [user.username, user.password], httpOptions)
     .pipe(catchError(this.handleError));
   }
 

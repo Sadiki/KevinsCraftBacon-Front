@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  url: 'KCraftBacon-env.3mh3qudecg.us-east-1.elasticbeanstalk.com/KCraftBacon-Back'
+  url: 'http://KCraftBacon-env.3mh3qudecg.us-east-1.elasticbeanstalk.com/'
 };
 
 /*

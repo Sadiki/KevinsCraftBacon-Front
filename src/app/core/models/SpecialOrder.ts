@@ -1,8 +1,8 @@
 export interface SpecialOrder {
-    id: number;
-    meat: string;
-    smoke: string;
-    seasoning: string;
+    special_order_id: number;
+    meat_type: string;
+    smoke_flavor: string;
+    seasonings: string;
     weight: number;
-    price: number;
+    special_order_price: number;
 }

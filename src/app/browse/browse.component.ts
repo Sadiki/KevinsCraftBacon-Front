@@ -14,12 +14,13 @@ export class BrowseComponent implements OnInit {
 
   displayAllBacon(){
     let admincontainer = document.getElementById('browse-itemlist')
-    let liContainer = document.createElement('li');
+   
 
     
     this.subscription = this.baconService.getAllBacon().subscribe( resp=>{ 
         for(let i = 0; i < resp.length; i++){
-          let name = resp[i].name;
+          let name = resp[i].item_name;
+          let liContainer = document.createElement('li');
           liContainer.innerHTML = name;
           admincontainer.appendChild(liContainer);
         }
