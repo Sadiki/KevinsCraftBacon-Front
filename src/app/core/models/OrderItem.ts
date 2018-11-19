@@ -1,9 +1,10 @@
 export interface OrderItem {
     id: number;
+    cust_id: number;
     quantity: number;
-    bacon_id: number;
+    item_id: number;
     status: number;
     order_id: number;
-    special_id: number;
-    cust_id: number;
+    special_order_id: number;
+
 }

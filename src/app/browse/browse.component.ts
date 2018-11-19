@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BaconService } from '../core/services/bacon.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-browse',
@@ -7,9 +9,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BrowseComponent implements OnInit {
 
-  constructor() { }
+  subscription: Subscription;
+  constructor(private baconService: BaconService) { }
 
-  ngOnInit() {
+  displayAllBacon(){
+    let admincontainer = document.getElementById('browse-itemlist')
+   
+
+    
+    this.subscription = this.baconService.getAllBacon().subscribe( resp=>{ 
+        for(let i = 0; i < resp.length; i++){
+          let name = resp[i].item_name;
+          let liContainer = document.createElement('li');
+          liContainer.innerHTML = name;
+          admincontainer.appendChild(liContainer);
+        }
+        });
   }
 
+  ngOnInit() {
+    this.displayAllBacon();
+  }
+
+  ngOnDestroy(){
+    if (this.subscription) {
+    this.subscription.unsubscribe();
+    }
+  }
 }

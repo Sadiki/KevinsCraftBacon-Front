@@ -7,6 +7,8 @@ const routes: Routes = [
     { path: 'auth', loadChildren: './authentication/authentication.module#AuthenticationModule' },
     { path: 'bacon', loadChildren: './bacon/bacon.module#BaconModule' },
     { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
+    { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+    { path: 'shipping', loadChildren: './shipping/shipping.module#ShippingModule'},
     { path: '**', redirectTo: '' }
 ];
 
