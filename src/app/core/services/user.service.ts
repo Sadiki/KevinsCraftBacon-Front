@@ -41,4 +41,8 @@ export class UserService {
     return this.http.post<User>(environment.url + 'register', user, httpOptions)
     .pipe(catchError(this.handleError));
   }
+
+  getAllUsers(): Observable<User[]> {
+    return this.http.get<User[]>(environment.url +'customer').pipe(catchError(this.handleError));
+  }
 }
