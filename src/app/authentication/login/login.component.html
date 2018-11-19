@@ -1,11 +1,21 @@
 <div id="login-container">
-  <div id="username">
-    Username:
-    <input type="text" />
-  </div>
-  <div id="password">
-    Password:
-    <input type="password" />
-  </div>
-  <button type="button" id="login-btn">Submit</button>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+  
+    <mat-card-content>
+      <mat-form-field appearance="outline">
+        <input matInput type="text" placeholder="Username" id="username" [(ngModel)]="user.username">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="outline">
+        <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="user.password">
+      </mat-form-field>
+      <br>
+      <button mat-flat-button type="button" (click)="login()">Login</button>
+      <br>
+      <a mat-button routerLink="/auth/register">Register</a>
+    </mat-card-content>
+  </mat-card>
 </div>

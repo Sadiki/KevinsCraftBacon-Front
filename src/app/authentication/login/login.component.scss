@@ -1,0 +1,53 @@
+@import '~@angular/material/theming';
+
+$blue-grey: mat-color($mat-blue-grey, 700);
+$dark-grey: mat-color($mat-grey, 900);
+$light-grey: mat-color($mat-grey, 200);
+$font: 'Montserrat', sans-serif;
+
+#login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90%;
+
+    mat-card {
+        margin: 0 auto;
+
+        mat-card-header {
+            justify-content: center;
+
+            mat-card-title {
+                color: $dark-grey;
+                font-family: $font;
+                font-size: 250%;
+            }
+        }
+
+        mat-card-content {
+            justify-content: center;
+
+            input {
+                color: $dark-grey;
+                font-family: $font;
+                font-size: 120%;
+            }
+
+            button {
+                background-color: $blue-grey;
+                color: $light-grey;
+                font-family: $font;
+                font-size: 120%;
+            }
+
+            button:hover {
+                background-color: $dark-grey;
+            }
+
+            a {
+                color: $blue-grey;
+                font-family: $font;
+            }
+        }
+    }
+}

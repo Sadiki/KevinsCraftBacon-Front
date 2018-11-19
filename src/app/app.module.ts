@@ -1,30 +1,31 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-
-import { ServiceWorkerModule } from '@angular/service-worker';
-
 import { environment } from '../environments/environment';
-
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
-import {MatSidenavModule} from '@angular/material/sidenav'
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    ServiceWorkerModule.register('ngsw-config.json', { enabled: environment.production }),
     BrowserAnimationsModule,
+    HttpClientModule,
+    HttpModule,
     MatButtonModule,
-    MatCheckboxModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    ServiceWorkerModule.register('ngsw-config.json', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
