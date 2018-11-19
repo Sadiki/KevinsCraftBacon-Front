@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { BaconService } from '../core/services/bacon.service';
 import { Subscription } from 'rxjs';
 
@@ -7,31 +7,29 @@ import { Subscription } from 'rxjs';
   templateUrl: './browse.component.html',
   styleUrls: ['./browse.component.scss']
 })
-export class BrowseComponent implements OnInit {
-
+export class BrowseComponent implements OnInit, OnDestroy {
+  liContainer: any;
   subscription: Subscription;
   constructor(private baconService: BaconService) { }
 
-  displayAllBacon(){
-    let admincontainer = document.getElementById('browse-itemlist')
-   
+  displayAllBacon() {
+    const admincontainer = document.getElementById('browse-itemlist');
 
-    
-    this.subscription = this.baconService.getAllBacon().subscribe( resp=>{ 
-        for(let i = 0; i < resp.length; i++){
-          let name = resp[i].item_name;
-          let liContainer = document.createElement('li');
-          liContainer.innerHTML = name;
-          admincontainer.appendChild(liContainer);
-        }
-        });
+    this.subscription = this.baconService.getAllBacon().subscribe(resp => {
+      for (let i = 0; i < resp.length; i++) {
+        // name = resp[i].item_name;
+        this.liContainer = document.createElement('li');
+        this.liContainer.innerHTML = resp[i].item_name;
+        admincontainer.appendChild(this.liContainer);
+      }
+    });
   }
 
   ngOnInit() {
-    this.displayAllBacon();
+    // this.displayAllBacon();
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     if (this.subscription) {
     this.subscription.unsubscribe();
     }
