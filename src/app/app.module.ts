@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
 
@@ -21,6 +22,7 @@ import { environment } from '../environments/environment';
     MatButtonModule,
     MatSidenavModule,
     MatToolbarModule,
+    MatTooltipModule,
     ServiceWorkerModule.register('ngsw-config.json', { enabled: environment.production })
   ],
   providers: [],
