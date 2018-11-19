@@ -1,18 +1,42 @@
-<mat-sidenav-container id='nav-container'>
-    <mat-sidenav id='sidenav' #sidenav opened="true" mode="side">
-        <button mat-button (click)="sidenav.toggle()" id="menu-toggle"><i  class="material-icons">
-                shopping_basket
-        </i></button>
-        <div class='nav-item-container'> <a  routerLink='/profile'><div id='profile-nav' class='nav-item'>Profile</div></a></div> 
-      <div class='nav-item-container'><a routerLink='/auth/login'><div id='login-nav' class='nav-item'>Login</div></a></div> 
-      <div class='nav-item-container'><a routerLink='/auth/register'><div id='register-nav' class='nav-item'>Register</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink='/bacon/cart'><div id='cart-nav' class='nav-item'>Cart</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink='/profile/orders'><div id='orders-nav' class='nav-item'>Orders</div></a></div> 
-      <div class='nav-item-container'>  <a  routerLink=''><div id='logout-nav' class='nav-item'>Logout</div></a></div> 
-    </mat-sidenav>
+<div class="content-container" (keypress)="handleKeypress($event)">
+    <mat-toolbar>
+        <button mat-icon-button matTooltip="Menu (ESC)" matTooltipPosition="right" (click)="sidenav.toggle()">
+            <i class="material-icons">menu</i>
+        </button>
 
-    <button mat-button (click)="sidenav.toggle()"><i class="material-icons">
-            shopping_basket
-            </i></button>
-<router-outlet id='router-out'></router-outlet>
-</mat-sidenav-container>
+        <h1>Kevin's Craft Bacon</h1>
+    </mat-toolbar>
+
+    <mat-sidenav-container id="nav-container">
+        <mat-sidenav id="sidenav" #sidenav opened="false" mode="side">
+            <a mat-button id="home" matTooltip="Home (Alt + 0)" matTooltipPosition="right" routerLink="">
+                <i class="material-icons">home</i>
+            </a>
+            <a mat-button id="profile" matTooltip="Profile (Alt + 1)" matTooltipPosition="right" routerLink="/profile" *ngIf="sessionUser">
+                <div id="profile-nav" class="nav-item">Profile</div>
+            </a>
+            <br>
+            <a mat-button id="login" matTooltip="Login (Alt + 2)" matTooltipPosition="right" routerLink="/auth/login" *ngIf="!sessionUser">
+                <div id="login-nav" class="nav-item">Login</div>
+            </a>
+            <br>
+            <a mat-button id="register" matTooltip="Register (Alt + 3)" matTooltipPosition="right" routerLink="/auth/register" *ngIf="!sessionUser">
+                <div id="register-nav" class="nav-item">Register</div>
+            </a>
+            <br>
+            <a mat-button id="cart" matTooltip="Cart (Alt + 4)" matTooltipPosition="right" routerLink="/bacon/cart" *ngIf="sessionUser">
+                <div id="cart-nav" class="nav-item">Cart</div>
+            </a>
+            <br>
+            <a mat-button id="orders" matTooltip="Orders (Alt + 5)" matTooltipPosition="right" routerLink="/profile/orders" *ngIf="sessionUser">
+                <div id="orders-nav" class="nav-item">Orders</div>
+            </a>
+            <br>
+            <a mat-button id="logout" matTooltip="Logout (Alt + 6)" matTooltipPosition="right" routerLink="" *ngIf="sessionUser">
+                <div id="logout-nav" class="nav-item">Logout</div>
+            </a>
+        </mat-sidenav>
+
+        <router-outlet id="router-out"></router-outlet>
+    </mat-sidenav-container>
+</div>

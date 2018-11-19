@@ -1,46 +1,65 @@
-#nav-container {
-    position: absolute;
+@import '~@angular/material/theming';
+
+$blue-grey: mat-color($mat-blue-grey, 700);
+$dark-grey: mat-color($mat-grey, 900);
+$light-grey: mat-color($mat-grey, 200);
+$toolbar: mat-color($mat-blue-grey, 900);
+
+mat-toolbar {
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
+    background: $toolbar;
+
+    button {
+        background: $toolbar;
+    }
+
+    h1 {
+        color: $light-grey;
+        font-family: 'Montserrat Subrayada', sans-serif;
+        font-size: 250%;
+        margin: 0 auto;
+    }
+}
+
+mat-sidenav-container {
+    position: absolute;
+    top: 10.2%;
     bottom: 0;
     left: 0;
     right: 0;
-  }
 
-#sidenav{
-    width: 15%;
+    mat-sidenav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: auto;
+        background: $blue-grey;
+
+        a {
+            border-radius: 0;
+            text-decoration: none;
+            padding: 15% 1em;
+            width: inherit;
+
+            .nav-item {
+                color: $light-grey;
+                font-family: 'Montserrat', sans-serif;
+                font-size: 160%;
+                font-weight: bold;
+                margin: 0 auto;
+            }
+        }
+
+        a:hover {
+            background-color: $dark-grey;
+        }
+    }
 }
 
-#menu-toggle{
-border-bottom: 3px solid;
-margin-left:31%;
-padding-bottom: 3%;
-margin-bottom:14%;
-}
-
-#menu-toggle i {
-    width: 50px;
-    height: 50px;
-    font-size: 50px;
-}
-
-.nav-item{
-    font-size: 25px;
-
-    margin-left: 33%;
-}
-
-.nav-item-container:hover{
-    background-color: 	#F5F5F5;
-}
-
-.nav-item-container{
-    border-bottom: 3px solid;
-    padding-bottom: 10%;
-    padding-top:10%;
-    margin: auto 0;
-}
-
-.nav-item-container a{
-    text-decoration: none;
-    color:black;
+i {
+    color: $light-grey;
+    font-size: 48px;
 }
