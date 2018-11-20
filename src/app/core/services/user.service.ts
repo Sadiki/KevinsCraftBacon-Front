@@ -43,6 +43,6 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(environment.url +'customer').pipe(catchError(this.handleError));
+    return this.http.get<User[]>(environment.url + 'customer').pipe(catchError(this.handleError));
   }
 }

@@ -1,7 +1,21 @@
 <div id='browse-container'>
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let item of bacon">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>
+            <a routerLink="/bacon/{{ item.item_id }}">{{ item.item_name }}</a>
+          </mat-card-title>
+        </mat-card-header>
+        <img mat-card-image [src]="item.item_picture" [alt]="item.name">
+        <mat-card-content>
+          <p>{{ item.item_desc }}</p>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
 
   <div id='featuredItems'>
       <img src="../../assets/images/featuredbg-resized.jpg" alt="Wooden Floor Tiles"/>
   </div>
-  <ul id='browse-itemlist'></ul>
 </div>
