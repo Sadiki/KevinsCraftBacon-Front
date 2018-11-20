@@ -1,9 +1,9 @@
 export interface User {
     cust_id?: number;
-    firstName?: string;
-    lastName?: string;
     username?: string;
     password?: string;
+    firstName?: string;
+    lastName?: string;
     email?: string;
     phoneNumber?: string;
     streetAddress?: string;
