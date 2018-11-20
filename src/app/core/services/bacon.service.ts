@@ -28,7 +28,7 @@ export class BaconService {
   }
 
   getAllBacon(): Observable<Bacon[]> {
-    return this.http.get<Bacon[]>(environment.url).pipe(catchError(this.handleError));
+    return this.http.get<Bacon[]>(environment.url + 'inventory').pipe(catchError(this.handleError));
   }
 
   fatSecret() {

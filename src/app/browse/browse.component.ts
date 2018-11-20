@@ -8,25 +8,26 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./browse.component.scss']
 })
 export class BrowseComponent implements OnInit, OnDestroy {
-  liContainer: any;
+  bacon: object[];
   subscription: Subscription;
+
   constructor(private baconService: BaconService) { }
 
-  displayAllBacon() {
-    const admincontainer = document.getElementById('browse-itemlist');
+  // displayAllBacon() {
+  //   const admincontainer = document.getElementById('browse-itemlist');
 
-    this.subscription = this.baconService.getAllBacon().subscribe(resp => {
-      for (let i = 0; i < resp.length; i++) {
-        // name = resp[i].item_name;
-        this.liContainer = document.createElement('li');
-        this.liContainer.innerHTML = resp[i].item_name;
-        admincontainer.appendChild(this.liContainer);
-      }
-    });
-  }
+  //   this.subscription = this.baconService.getAllBacon().subscribe(resp => {
+  //     for (let i = 0; i < resp.length; i++) {
+  //       // name = resp[i].item_name;
+  //       this.liContainer = document.createElement('li');
+  //       this.liContainer.innerHTML = resp[i].item_name;
+  //       admincontainer.appendChild(this.liContainer);
+  //     }
+  //   });
+  // }
 
   ngOnInit() {
-    // this.displayAllBacon();
+    this.subscription = this.baconService.getAllBacon().subscribe((resp) => this.bacon = resp);
   }
 
   ngOnDestroy() {
