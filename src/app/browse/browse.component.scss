@@ -1,3 +1,46 @@
+@import '~@angular/material/theming';
+
+$blue-grey: mat-color($mat-blue-grey, 700);
+$dark-grey: mat-color($mat-grey, 900);
+$light-grey: mat-color($mat-grey, 200);
+$font: 'Montserrat', sans-serif;
+
+mat-grid-tile {
+    border: 1px solid black;
+
+    mat-card {
+        height: inherit;
+
+        mat-card-header {
+            display: flex;
+            justify-content: center;
+            margin: 3% auto;
+
+            a {
+                color: $blue-grey;
+                font-family: $font;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: $dark-grey;
+            }
+        }
+
+        img {
+            flex: 1;
+        }
+
+        mat-card-content {
+            margin: 3% auto;
+
+            p {
+                font-family: $font;
+            }
+        }
+    }
+}
+
 #featuredItems{
 
     height: 100%;
