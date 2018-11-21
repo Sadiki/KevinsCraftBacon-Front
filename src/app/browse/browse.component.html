@@ -1,15 +1,15 @@
 <div id='browse-container'>
-  <mat-grid-list cols="3" rowHeight="2:1">
+  <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let item of bacon">
       <mat-card>
         <mat-card-header>
           <mat-card-title>
-            <a routerLink="/bacon/{{ item.item_id }}">{{ item.item_name }}</a>
+            <a routerLink="/bacon/{{ item.itemId }}">{{ item.itemName }}</a>
           </mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="item.item_picture" [alt]="item.name">
+        <img mat-card-image [src]="item.itemPicture" [alt]="item.itemName">
         <mat-card-content>
-          <p>{{ item.item_desc }}</p>
+          <p>{{ item.itemDescription }}</p>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
