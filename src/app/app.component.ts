@@ -1,4 +1,5 @@
-import { Component, HostListener, ViewChild } from '@angular/core';
+import { Component, HostListener, OnDestroy, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 import { LoggedInService } from './core/services/user.service';
 
@@ -7,16 +8,16 @@ import { LoggedInService } from './core/services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   title = 'KevinsCraftBacon';
   sessionUser: boolean;
+  subscription: Subscription;
   @ViewChild('sidenav') sidenav;
 
   constructor(private loggedIn: LoggedInService) {
-    this.loggedIn.loggedIn.subscribe((value) => this.sessionUser = value);
+    this.subscription = this.loggedIn.loggedIn.subscribe((value) => this.sessionUser = value);
   }
 
-  // Esc key toggles sidenav
   @HostListener('document:keydown', ['$event'])
   handleKeypress(event: KeyboardEvent) {
     if (event.key == 'Escape') {
@@ -38,5 +39,9 @@ export class AppComponent {
         document.getElementById('logout').click();
       }
     }
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 }

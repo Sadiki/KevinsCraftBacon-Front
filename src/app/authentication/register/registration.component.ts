@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { User } from '../../core/models/User';
-import { UserService } from '../../core/services/user.service';
+import { LoggedInService, UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +16,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   user: User = {};
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private loggedIn: LoggedInService,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     if (this.sessionUser) {
@@ -26,10 +28,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   register() {
     this.subscription = this.userService.register(this.user).subscribe((user) => {
-      if (!user) {
-        this.isValid = false;
-      } else {
+      if (user) {
         localStorage.setItem('user', JSON.stringify(user));
+        this.loggedIn.loggedIn.next(true);
         this.router.navigate(['']);
       }
     });

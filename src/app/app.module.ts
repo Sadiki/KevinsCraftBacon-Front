@@ -10,6 +10,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoggedInService } from './core/services/user.service';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -27,7 +28,7 @@ import { environment } from '../environments/environment';
     MatTooltipModule,
     ServiceWorkerModule.register('ngsw-config.json', { enabled: environment.production })
   ],
-  providers: [],
+  providers: [LoggedInService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

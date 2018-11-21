@@ -51,5 +51,5 @@ ${error.error}`
   providedIn: 'root'
 })
 export class LoggedInService {
-  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(localStorage.getItem('user') && true);
+  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 }
