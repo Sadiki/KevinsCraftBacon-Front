@@ -19,8 +19,8 @@ export class BaconService {
       console.error('Aw, Snap!\n' + error.error.message);
     } else {
       console.error(
-        `Error code ${error.status}:` +
-        `${error.error}`
+        `Error code ${error.status}:
+${error.error}`
       );
     }
 

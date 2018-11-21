@@ -15,10 +15,7 @@ export class BrowseComponent implements OnInit, OnDestroy {
   constructor(private baconService: BaconService) { }
 
   ngOnInit() {
-    this.subscription = this.baconService.getAllBacon().subscribe((resp) => {
-      console.log(resp);
-      this.bacon = resp;
-    });
+    this.subscription = this.baconService.getAllBacon().subscribe((resp) => this.bacon = resp);
   }
 
   ngOnDestroy() {

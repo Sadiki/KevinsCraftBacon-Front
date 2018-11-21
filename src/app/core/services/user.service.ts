@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { User } from '../models/User';
@@ -25,7 +25,7 @@ export class UserService {
     } else {
       console.error(
         `Error code ${error.status}:
-         ${error.error}`
+${error.error}`
       );
     }
 
@@ -33,16 +33,23 @@ export class UserService {
   }
 
   login(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'login', user, httpOptions)
+    return this.http.post<User>(environment.url + 'customer/login', user, httpOptions)
     .pipe(catchError(this.handleError));
   }
 
   register(user: User): Observable<User> {
-    return this.http.post<User>(environment.url + 'register', user, httpOptions)
+    return this.http.post<User>(environment.url + 'customer/register', user, httpOptions)
     .pipe(catchError(this.handleError));
   }
 
   getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(environment.url + 'customer').pipe(catchError(this.handleError));
   }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoggedInService {
+  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(localStorage.getItem('user') && true);
 }

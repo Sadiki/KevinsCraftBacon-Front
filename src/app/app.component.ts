@@ -1,5 +1,7 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
 
+import { LoggedInService } from './core/services/user.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,8 +9,12 @@ import { Component, HostListener, ViewChild } from '@angular/core';
 })
 export class AppComponent {
   title = 'KevinsCraftBacon';
-  sessionUser = localStorage.getItem('user');
+  sessionUser: boolean;
   @ViewChild('sidenav') sidenav;
+
+  constructor(private loggedIn: LoggedInService) {
+    this.loggedIn.loggedIn.subscribe((value) => this.sessionUser = value);
+  }
 
   // Esc key toggles sidenav
   @HostListener('document:keydown', ['$event'])
