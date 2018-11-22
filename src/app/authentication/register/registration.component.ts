@@ -26,6 +26,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   register() {
     this.subscription = this.userService.register(this.user).subscribe((user) => {
+      console.log("Test")
       if (!user) {
         this.isValid = false;
       } else {

@@ -7,6 +7,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PaymentComponent } from './payment/payment.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { ProfileComponent } from './profile.component';
+import { SharedModule } from '../shared/shared.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { ProfileComponent } from './profile.component';
   ],
   imports: [
     CommonModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    SharedModule,
+    FormsModule
   ]
 })
 export class ProfileModule { }

@@ -38,4 +38,8 @@ export class BaconService {
   chuckNorris() {
     return this.http.get<ChuckNorris>('https://api.chucknorris.io/jokes/random');
   }
+
+  getWishList(): Observable<Bacon[]> {
+    return this.http.get<Bacon[]>(environment.url + 'profile/orders/save-for-later').pipe(catchError(this.handleError));1
+  }
 }

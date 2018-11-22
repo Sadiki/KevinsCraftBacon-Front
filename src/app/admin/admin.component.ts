@@ -16,12 +16,13 @@ export class AdminComponent implements OnInit {
     let admincontainer = document.getElementById('admin-container')
     let ulContainer = document.createElement('ul');
     
+
     
     this.subscription = this.userService.getAllUsers().subscribe( resp=>{ 
         for(let i = 0; i < resp.length; i++){
           let liContainer = document.createElement('li');
           liContainer.innerHTML = resp[i].firstName;
-          console.log(resp[i].firstName);
+          console.log(resp[i]);
           ulContainer.append(liContainer);
         }
         

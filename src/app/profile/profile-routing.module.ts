@@ -5,6 +5,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
+
+
 const routes: Routes = [
   { path: '', component: ProfileComponent },
   { path: 'cart', component: CartComponent },

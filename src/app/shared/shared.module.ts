@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import {MatTableModule} from '@angular/material/table';
 
 import { BaconizePipe } from './pipes/baconize.pipe';
 
@@ -18,7 +19,8 @@ import { BaconizePipe } from './pipes/baconize.pipe';
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
   ],
   exports: [
     BaconizePipe,
@@ -26,7 +28,9 @@ import { BaconizePipe } from './pipes/baconize.pipe';
     MatCardModule,
     MatCheckboxModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatTableModule
+
   ]
 })
 export class SharedModule { }

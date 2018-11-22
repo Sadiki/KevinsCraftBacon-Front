@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.subscription = this.userService.login(this.user).subscribe((user) => {
+      console.log(this.user);
       if (!user) {
         this.isValid = false;
       } else {

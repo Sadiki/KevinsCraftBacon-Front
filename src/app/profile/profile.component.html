@@ -1,25 +1,84 @@
-<div id='account-container'>
-  <mat-card>
-    //
-  </mat-card>
-    <div id="account-username">
+<div id='account-container' >
+    <div id='acc-options'>
+        <h1> Welcome back, {{usrFn}} {{usrLn}}</h1>
+        <h2>What would you like to do?</h2>
+        <button mat-flat-button id='updateAccInfo' (click)="isVisible()">Update Account Information</button>
+        <button mat-flat-button id='pastOrders'>View Past Orders</button>
+        <button mat-flat-button id='wishlist'>View Wishlist</button>
+        <hr />
       </div>
-      <div id="account-password">
+  <div id='update-acc-container'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Account Information</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class='right-side'>
+          Username: {{usrNm}}
+        </div>
+        
+        <div class='left-side'>  
+          Password: ****
+        <mat-form-field appearance="outline">
+          <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="usr.password">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-firstname">
+      
+
+      <div class='right-side'>
+           Email: {{usrEm}}
+        <mat-form-field appearance="outline">
+          <input matInput type="email" placeholder="Email" id="email" [(ngModel)]="usr.email">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-lastname">
+     
+        <div class='left-side'>
+          Phone Number: {{usrPhNum}}
+        <mat-form-field appearance="outline">
+          <input matInput type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" placeholder="Phone #" id="phone-no"
+            [(ngModel)]="usr.phoneNumber">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
+        </div>
+
+        <div class='right-side'>
+          Address: {{usrAddr}}
+        <mat-form-field appearance="outline">
+          <input matInput type="text" placeholder="Address" id="address" [(ngModel)]="usr.streetAddress">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-email">
+        
+      <div class='left-side'> 
+         City: {{usrCity}}
+        <mat-form-field appearance="outline">
+          <input matInput type="text" placeholder="City" id="city" [(ngModel)]="usr.city">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-phoneno">
+      
+      <div class='right-side'>  
+         State: {{usrSte}}
+        <mat-form-field appearance="outline">
+          <input matInput type="text" placeholder="State" id="state" [(ngModel)]="usr.state">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-address">
+     
+      <div class='left-side'>  
+        Zipcode: {{usrZip}}
+        <mat-form-field appearance="outline">
+          <input matInput type="text" placeholder="Zipcode" id="zip" [(ngModel)]="usr.zip">
+        </mat-form-field>
+        <button mat-flat-button class='edit-acc-info'>Modify</button>
       </div>
-      <div id="account-city">
-      </div>
-      <div id="account-state">
-      </div>
-      <div id="account-zip">
-      </div>
+      
+
+        <button mat-flat-button type="button" (click)="updateAccountInfo()">Update Information</button>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>
