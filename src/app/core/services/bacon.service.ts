@@ -31,6 +31,10 @@ ${error.error}`
     return this.http.get<Bacon[]>(environment.url + 'inventory').pipe(catchError(this.handleError));
   }
 
+  getOneBacon(id: number): Observable<Bacon> {
+    return this.http.get<Bacon>(environment.url + `inventory/${id}`).pipe(catchError(this.handleError));
+  }
+
   fatSecret() {
     //
   }
