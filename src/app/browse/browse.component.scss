@@ -6,15 +6,15 @@ $light-grey: mat-color($mat-grey, 200);
 $font: 'Montserrat', sans-serif;
 
 mat-grid-tile {
+    display: inline-block;
     border: 1px solid black;
 
     mat-card {
-        height: inherit;
+        display: inline-block;
+        border: 1px solid green;
 
         mat-card-header {
-            display: flex;
-            justify-content: center;
-            margin: 3% auto;
+            margin: 2% auto;
 
             a {
                 color: $blue-grey;
@@ -27,15 +27,15 @@ mat-grid-tile {
             }
         }
 
-        img {
-            flex: 1;
-        }
-
         mat-card-content {
-            margin: 3% auto;
+
+            img {
+                object-fit: contain;
+            }
 
             p {
                 font-family: $font;
+                margin: 2% auto;
             }
         }
     }

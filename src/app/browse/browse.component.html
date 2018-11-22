@@ -7,8 +7,8 @@
             <a routerLink="/bacon/{{ item.itemId }}">{{ item.itemName }}</a>
           </mat-card-title>
         </mat-card-header>
-        <img mat-card-image [src]="item.itemPicture" [alt]="item.itemName">
         <mat-card-content>
+          <img [src]="item.itemPicture" [alt]="item.itemName">
           <p>{{ item.itemDescription }}</p>
         </mat-card-content>
       </mat-card>
