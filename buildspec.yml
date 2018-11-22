@@ -16,8 +16,8 @@ phases:
             - echo Deploying production files to S3 web hosting bucket
             - aws s3 sync --delete dist s3://<NAME OF YOUR S3 BUCKET>
             - echo Files deployed on `date`
-        artifacts:
-            files: 
-                - '**/*'
-                base-directory: 'dist'
-                discard-paths: yes
+    artifacts:
+        files: 
+            - '**/*'
+            base-directory: 'dist'
+            discard-paths: yes
