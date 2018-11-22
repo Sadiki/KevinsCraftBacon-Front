@@ -14,7 +14,7 @@ phases:
     post_build:
         commands:
             - echo Deploying production files to S3 web hosting bucket
-            - aws s3 sync --delete dist s3://<NAME OF YOUR S3 BUCKET>
+            - aws s3 sync --delete dist s3://k-craft-bacon
             - echo Files deployed on `date`
 artifacts:
     files:
