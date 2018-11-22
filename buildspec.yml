@@ -16,4 +16,7 @@ phases:
             - echo Deploying production files to S3 web hosting bucket
             - aws s3 sync --delete dist s3://k-craft-bacon
             - aws s3 sync dist s3://k-craft-bacon
+            - mv *.* ..
+            - ls
+            - pwd
             - echo Files deployed on `date`
