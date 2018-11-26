@@ -5,52 +5,37 @@ $dark-grey: mat-color($mat-grey, 900);
 $light-grey: mat-color($mat-grey, 200);
 $font: 'Montserrat', sans-serif;
 
-mat-grid-tile {
-    display: inline-block;
+#tile {
+    display: flex;
+    flex-flow: column;
     border: 1px solid black;
 
-    mat-card {
-        display: inline-block;
-        border: 1px solid green;
+    #name {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: 1% auto;
+        text-align: center;
 
-        mat-card-header {
-            margin: 2% auto;
-
-            a {
-                color: $blue-grey;
-                font-family: $font;
-                text-decoration: none;
-            }
-
-            a:hover {
-                color: $dark-grey;
-            }
+        a {
+            color: $blue-grey;
+            font-family: $font;
+            font-size: 120%;
+            text-decoration: none;
         }
 
-        mat-card-content {
+        a:hover {
+            color: $dark-grey;
+        }
+    }
 
-            img {
-                object-fit: contain;
-            }
+    #picture {
+        height: 80%;
+        flex: 1;
 
-            p {
-                font-family: $font;
-                margin: 2% auto;
-            }
+        img {
+            object-fit: contain;
         }
     }
 }
-
-// #featuredItems{
-
-//     height: 100%;
-// }
-
-// #featuredItems img{
-//     width: 100%;
-
-// }
-
-// #browse-container{
-//     height: 100vh;
-// }
