@@ -1,9 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BaconRoutingModule } from './bacon-routing.module';
-import { BaconComponent } from './main/bacon.component';
-import { CraftComponent } from './craft/craft.component';
+import { NgModule } from '@angular/core';
 
+import { BaconRoutingModule } from './bacon-routing.module';
+import { CraftComponent } from './craft/craft.component';
+import { BaconComponent } from './main/bacon.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -11,8 +12,9 @@ import { CraftComponent } from './craft/craft.component';
     CraftComponent
   ],
   imports: [
+    BaconRoutingModule,
     CommonModule,
-    BaconRoutingModule
+    SharedModule
   ]
 })
 export class BaconModule { }

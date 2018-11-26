@@ -1,7 +1,13 @@
 <div id='browse-container'>
-
-  <div id='featuredItems'>
-      <img src="../../assets/images/featuredbg-resized.jpg" alt="Wooden Floor Tiles"/>
-  </div>
-  <ul id='browse-itemlist'></ul>
+  <mat-grid-list cols="3" rowHeight="1:1">
+    <mat-grid-tile *ngFor="let item of bacon" id="tile">
+      <div id="name">
+        <a routerLink="/bacon/{{ item.itemId }}">{{ item.itemName }}</a>
+      </div>
+      <br>
+      <div id="picture">
+        <img [src]="item.itemPicture" [alt]="item.itemName">
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
 </div>

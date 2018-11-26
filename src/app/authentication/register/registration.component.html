@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title>Registration</mat-card-title>
     </mat-card-header>
-  
+
     <mat-card-content>
       <mat-form-field appearance="outline">
         <input matInput type="text" placeholder="Username" id="username" [(ngModel)]="user.username">
@@ -26,7 +26,8 @@
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
-          <input matInput type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" placeholder="Phone #" id="phone-no" [(ngModel)]="user.phoneNumber">
+        <input matInput type="tel"  placeholder="Phone #" id="phone-no"
+          [(ngModel)]="user.phoneNumber">
       </mat-form-field>
       <br>
       <mat-form-field appearance="outline">
@@ -44,6 +45,14 @@
       <mat-form-field appearance="outline">
         <input matInput type="text" placeholder="Zipcode" id="zip" [(ngModel)]="user.zip">
       </mat-form-field>
+      <br />
+      Would you like to sign up for our NewsLetter?
+      <br>
+
+      <div>
+        <mat-checkbox id='checkboxYes' [checked]='isCheckedYes' (change) ='onCheckBoxClicked()'>Yes </mat-checkbox>
+        <mat-checkbox id='checkboxNo' [checked]='isCheckedNo' (change) ='onCheckBoxClicked()'>No</mat-checkbox>
+      </div>
       <br>
       <button mat-flat-button type="button" (click)="register()">Register</button>
       <br>
@@ -51,4 +60,3 @@
     </mat-card-content>
   </mat-card>
 </div>
-
