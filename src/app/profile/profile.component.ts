@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, Inject, Injectable, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, Injectable} from '@angular/core';
 
 import { User } from '../core/models/User';
 import { UserService } from '../core/services/user.service';
@@ -61,7 +61,7 @@ export class ProfileComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService, public dialog: MatDialog, private changeDetector: ChangeDetectorRef) { }
+  constructor(private userService: UserService, public dialog: MatDialog) { }
 
   ngOnInit() {
     globalDialog = this.dialog;
@@ -76,9 +76,8 @@ export class ProfileComponent implements OnInit {
     this.showView = 'accInfo';
     this.hideAccountInput();
     this.getAllPaymentOpt();
-   
-
   }
+  
   storeAccountInfo(){    
     this.currUsr = JSON.parse(this.usrString);
 
