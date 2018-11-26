@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { User } from '../models/User';
@@ -28,8 +28,8 @@ export class UserService {
       console.error('Aw, Snap!\n' + error.error.message);
     } else {
       console.error(
-        `Error code ${error.status}:` +
-        `${error.error}`
+        `Error code ${error.status}:
+${error.error}`
       );
     }
 
@@ -80,4 +80,11 @@ export class UserService {
   getWishList(user: User): Observable<OrderItem[]>{
     return this.http.post<OrderItem[]>(environment.url + '/profile/wishlist', user, httpOptions ).pipe(catchError(this.handleError));
   }
+}
+
+@Injectable({
+  providedIn: 'root'
+})
+export class LoggedInService {
+  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 }

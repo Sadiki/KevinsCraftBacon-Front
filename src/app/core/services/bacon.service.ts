@@ -19,8 +19,8 @@ export class BaconService {
       console.error('Aw, Snap!\n' + error.error.message);
     } else {
       console.error(
-        `Error code ${error.status}:` +
-        `${error.error}`
+        `Error code ${error.status}:
+${error.error}`
       );
     }
 
@@ -28,7 +28,11 @@ export class BaconService {
   }
 
   getAllBacon(): Observable<Bacon[]> {
-    return this.http.get<Bacon[]>(environment.url).pipe(catchError(this.handleError));
+    return this.http.get<Bacon[]>(environment.url + 'inventory').pipe(catchError(this.handleError));
+  }
+
+  getOneBacon(id: number): Observable<Bacon> {
+    return this.http.get<Bacon>(environment.url + `inventory/${id}`).pipe(catchError(this.handleError));
   }
 
   fatSecret() {

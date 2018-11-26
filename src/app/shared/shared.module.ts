@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 
@@ -26,8 +27,8 @@ import { ProfileComponent } from '../profile/profile.component';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatGridListModule,
   ],
   exports: [
     BaconizePipe,
@@ -38,9 +39,11 @@ import { ProfileComponent } from '../profile/profile.component';
     MatInputModule,
     MatTableModule,
     MatDialogModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatGridListModule
 
   ],
   providers: [ProfileComponent]
+  
 })
 export class SharedModule { }

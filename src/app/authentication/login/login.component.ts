@@ -1,10 +1,9 @@
-import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { User } from '../../core/models/User';
-import { UserService } from '../../core/services/user.service';
+import { LoggedInService, UserService } from '../../core/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +11,13 @@ import { UserService } from '../../core/services/user.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  isValid = true;
   sessionUser = localStorage.getItem('user');
   subscription: Subscription;
   user: User = {};
 
-  constructor(private userService: UserService, private router: Router, private location: Location) { }
+  constructor(private loggedIn: LoggedInService,
+              private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     if (this.sessionUser) {
@@ -27,11 +27,9 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   login() {
     this.subscription = this.userService.login(this.user).subscribe((user) => {
-      console.log(this.user);
-      if (!user) {
-        this.isValid = false;
-      } else {
+      if (user) {
         localStorage.setItem('user', JSON.stringify(user));
+        this.loggedIn.loggedIn.next(true);
         this.router.navigate(['']);
       }
     });

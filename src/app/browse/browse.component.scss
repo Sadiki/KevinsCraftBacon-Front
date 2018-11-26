@@ -1,13 +1,41 @@
-#featuredItems{
+@import '~@angular/material/theming';
 
-    height: 100%;
-}
+$blue-grey: mat-color($mat-blue-grey, 700);
+$dark-grey: mat-color($mat-grey, 900);
+$light-grey: mat-color($mat-grey, 200);
+$font: 'Montserrat', sans-serif;
 
-#featuredItems img{
-    width: 100%;
+#tile {
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
 
-}
+    #name {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        margin: 1% auto;
+        text-align: center;
 
-#browse-container{
-    height: 100vh;
+        a {
+            color: $blue-grey;
+            font-family: $font;
+            font-size: 120%;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: $dark-grey;
+        }
+    }
+
+    #picture {
+        height: 80%;
+        flex: 1;
+
+        img {
+            object-fit: contain;
+        }
+    }
 }
