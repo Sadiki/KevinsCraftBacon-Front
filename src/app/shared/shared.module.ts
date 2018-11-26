@@ -7,7 +7,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
 
+
 import { BaconizePipe } from './pipes/baconize.pipe';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatPaginatorModule } from '@angular/material';
+import { ProfileComponent } from '../profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +24,10 @@ import { BaconizePipe } from './pipes/baconize.pipe';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatPaginatorModule
+    
   ],
   exports: [
     BaconizePipe,
@@ -29,8 +36,11 @@ import { BaconizePipe } from './pipes/baconize.pipe';
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule
+    MatTableModule,
+    MatDialogModule,
+    MatPaginatorModule
 
-  ]
+  ],
+  providers: [ProfileComponent]
 })
 export class SharedModule { }

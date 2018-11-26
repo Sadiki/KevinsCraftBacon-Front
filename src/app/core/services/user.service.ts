@@ -8,6 +8,7 @@ import { Order } from '../models/Order';
 
 import { CreditCard } from '../models/CreditCard';
 import { environment } from '../../../environments/environment';
+import { OrderItem } from '../models/OrderItem';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -46,22 +47,37 @@ export class UserService {
   }
 
   getAllUsers(): Observable<User[]> {
+    
     return this.http.get<User[]>(environment.url +'customer').pipe(catchError(this.handleError));
   }
 
   updateUser(user: User): Observable<User>{
-    return this.http.put<User>(environment.url + 'customer/update', user, httpOptions).pipe(catchError(this.handleError));
+    let users : Observable<User>  = this.http.put<User>(environment.url + 'customer/update', user, httpOptions).pipe(catchError(this.handleError));
+    console.log(users);
+    return users
   }
 
-  AddNewCard(card: CreditCard ): Observable<User>{
-    return this.http.post<User>(environment.url + 'creditcard/add', card, httpOptions).pipe(catchError(this.handleError));
+  getAllPaymentOpts(): Observable<CreditCard[]> {
+    return this.http.get<CreditCard[]>(environment.url + 'creditcard').pipe(catchError(this.handleError));
+  }
+  
+  addNewCard(card: CreditCard ): Observable<CreditCard>{
+    return this.http.post<CreditCard>(environment.url + 'creditcard/add', card, httpOptions).pipe(catchError(this.handleError));
   }
 
-  updateCard(card: CreditCard ): Observable<User>{
-    return this.http.post<User>(environment.url + 'creditcard/update', card, httpOptions).pipe(catchError(this.handleError));
+  updateCard(card: CreditCard ): Observable<CreditCard>{
+    return this.http.put<CreditCard>(environment.url + 'creditcard/update', card, httpOptions).pipe(catchError(this.handleError));
+  }
+
+  deleteCard(card: CreditCard): Observable<CreditCard>{
+    return this.http.put<CreditCard>(environment.url + 'creditcard/delete', card, httpOptions).pipe(catchError(this.handleError));
   }
 
   getAllPastOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(environment.url + '').pipe(catchError(this.handleError));
+    return this.http.get<Order[]>(environment.url + '/profile/orders').pipe(catchError(this.handleError));
+  }
+
+  getWishList(user: User): Observable<OrderItem[]>{
+    return this.http.post<OrderItem[]>(environment.url + '/profile/wishlist', user, httpOptions ).pipe(catchError(this.handleError));
   }
 }

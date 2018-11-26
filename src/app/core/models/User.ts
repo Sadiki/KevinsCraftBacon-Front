@@ -1,5 +1,5 @@
 export interface User {
-    cust_id?: number;
+    cust_id?: string;
     firstName?: string;
     lastName?: string;
     username?: string;
@@ -10,5 +10,5 @@ export interface User {
     city?: string;
     state?: string;
     zip?: string;
-    newsletter?: number;
+    newsletter?: string;
 }

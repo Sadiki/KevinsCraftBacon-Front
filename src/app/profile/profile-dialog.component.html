@@ -1,0 +1,26 @@
+<h1 mat-dialog-title>Please Enter Credit Card Information </h1>
+<mat-dialog-content>
+  <p>Card Holder's Full Name: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="data.fullName">
+  </mat-form-field>
+
+  <p>Card Number: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="data.cardNumber">
+  </mat-form-field>
+
+  <p>Expiration Date:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="data.expirationDate">
+  </mat-form-field>
+  
+  <p>Security Code: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="data.securityCode">
+  </mat-form-field>
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close] = "data" cdkFocusInitial>Ok</button>
+</div>

@@ -1,84 +1,150 @@
-<div id='account-container' >
-    <div id='acc-options'>
-        <h1> Welcome back, {{usrFn}} {{usrLn}}</h1>
-        <h2>What would you like to do?</h2>
-        <button mat-flat-button id='updateAccInfo' (click)="isVisible()">Update Account Information</button>
-        <button mat-flat-button id='pastOrders'>View Past Orders</button>
-        <button mat-flat-button id='wishlist'>View Wishlist</button>
-        <hr />
-      </div>
-  <div id='update-acc-container'>
+<div id='account-container'>
+  <div id='acc-options'>
+    <h1> Welcome back, {{usrFn}} {{usrLn}}</h1>
+    <h2>What would you like to do?</h2>
+    <button mat-flat-button id='updateAccInfo' (click)="isVisible($event)">Update Account Information</button>
+    <button mat-flat-button id='pastOrders'  (click)="isVisible($event)">View Past Orders</button>
+    <button mat-flat-button id='wishlist' (click)="isVisible($event)">View Wishlist</button>
+  </div>
+  <hr />
+  <div id='update-acc-container' *ngIf="showView == 'accInfo'">
     <mat-card>
       <mat-card-header>
         <mat-card-title> Account Information</mat-card-title>
       </mat-card-header>
-
+      <button mat-flat-button type="button" (click)="showAccountInput()">Modify Information</button>
       <mat-card-content>
         <div class='right-side'>
           Username: {{usrNm}}
         </div>
-        
-        <div class='left-side'>  
-          Password: ****
-        <mat-form-field appearance="outline">
-          <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="usr.password">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-      
 
-      <div class='right-side'>
-           Email: {{usrEm}}
-        <mat-form-field appearance="outline">
-          <input matInput type="email" placeholder="Email" id="email" [(ngModel)]="usr.email">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-     
+        <div class='left-side'>
+          Password: ****
+          <mat-form-field appearance="outline" id='passForm' class='acc-forms'>
+            <input matInput type="password" placeholder="Password" id="password" [(ngModel)]="usr.password">
+          </mat-form-field>
+        </div>
+
+
+        <div class='right-side'>
+          Email: {{usrEm}}
+          <mat-form-field appearance="outline" id='emailForm' class='acc-forms'>
+            <input matInput type="email" placeholder="Email" id="email" [(ngModel)]="usr.email">
+          </mat-form-field>
+        </div>
+
         <div class='left-side'>
           Phone Number: {{usrPhNum}}
-        <mat-form-field appearance="outline">
-          <input matInput type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" placeholder="Phone #" id="phone-no"
-            [(ngModel)]="usr.phoneNumber">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
+          <mat-form-field appearance="outline" class='acc-forms' id="phoneForm">
+            <input matInput type="tel" pattern="[0-9]{3} - [0-9]{3} - [0-9]{4}" placeholder="Phone #" id="phone-no"
+              [(ngModel)]="usr.phoneNumber">
+          </mat-form-field>
         </div>
 
         <div class='right-side'>
           Address: {{usrAddr}}
-        <mat-form-field appearance="outline">
-          <input matInput type="text" placeholder="Address" id="address" [(ngModel)]="usr.streetAddress">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-        
-      <div class='left-side'> 
-         City: {{usrCity}}
-        <mat-form-field appearance="outline">
-          <input matInput type="text" placeholder="City" id="city" [(ngModel)]="usr.city">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-      
-      <div class='right-side'>  
-         State: {{usrSte}}
-        <mat-form-field appearance="outline">
-          <input matInput type="text" placeholder="State" id="state" [(ngModel)]="usr.state">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-     
-      <div class='left-side'>  
-        Zipcode: {{usrZip}}
-        <mat-form-field appearance="outline">
-          <input matInput type="text" placeholder="Zipcode" id="zip" [(ngModel)]="usr.zip">
-        </mat-form-field>
-        <button mat-flat-button class='edit-acc-info'>Modify</button>
-      </div>
-      
+          <mat-form-field appearance="outline" class='acc-forms' id='addressForm'>
+            <input matInput type="text" placeholder="Address" id="address" [(ngModel)]="usr.streetAddress">
+          </mat-form-field>
+        </div>
+
+        <div class='left-side'>
+          City: {{usrCity}}
+          <mat-form-field appearance="outline" class='acc-forms' id='cityForm'>
+            <input matInput type="text" placeholder="City" id="city" [(ngModel)]="usr.city">
+          </mat-form-field>
+        </div>
+
+        <div class='right-side'>
+          State: {{usrSte}}
+          <mat-form-field appearance="outline" class='acc-forms' id='stateForm'>
+            <input matInput type="text" placeholder="State" id="state" [(ngModel)]="usr.state">
+          </mat-form-field>
+        </div>
+
+        <div class='left-side'>
+          Zipcode: {{usrZip}}
+          <mat-form-field appearance="outline" class='acc-forms' id='zipForm'>
+            <input matInput type="text" placeholder="Zipcode" id="zip" [(ngModel)]="usr.zip">
+          </mat-form-field>
+        </div>
 
         <button mat-flat-button type="button" (click)="updateAccountInfo()">Update Information</button>
       </mat-card-content>
     </mat-card>
+  
+  <hr />
+  <div id='payment-container'>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title> Payment Information</mat-card-title>
+        <button mat-flat-button type="button" (click)='openNewPaymentDialog()'>Add New Card</button>
+      </mat-card-header>
+      <mat-card-content id='payment-opts'>
+
+      </mat-card-content>
+
+      <button mat-flat-button *ngIf='isDeleteModeActive' type="button" (click)='deletePaymentOpts()'>Modify</button>
+    </mat-card>
   </div>
+</div>
+
+  <div id='orderedItems' *ngIf="showView == 'pastOrders'" class="mat-elevation-z8">
+    <table mat-table [dataSource]="pastOrdersDataSource" >
+
+      <ng-container matColumnDef="orderId">
+        <th mat-header-cell *matHeaderCellDef> Order ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> Item Ordered </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderUpdate">
+        <th mat-header-cell *matHeaderCellDef> Order Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderUpdate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderPrice">
+        <th mat-header-cell *matHeaderCellDef> Order Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="pastDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: pastDisplayedColumns;"></tr>
+    </table>
+  </div>
+
+  <div id='wishlist' *ngIf="showView == 'wishlist'" class="mat-elevation-z8">
+    <table mat-table [dataSource]="wishlistDataSource" >
+
+      <ng-container matColumnDef="orderId">
+        <th mat-header-cell *matHeaderCellDef> Order ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createdDate">
+        <th mat-header-cell *matHeaderCellDef> Item Ordered </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderUpdate">
+        <th mat-header-cell *matHeaderCellDef> Order Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.orderUpdate}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="orderPrice">
+        <th mat-header-cell *matHeaderCellDef> Order Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="wishlistDisplayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: wishlistDisplayedColumns;"></tr>
+    </table>
+
+  </div>
+
+  <div [hidden]="hidePaginator"><mat-paginator  [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator></div>
 </div>

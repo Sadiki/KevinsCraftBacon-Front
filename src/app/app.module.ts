@@ -11,6 +11,8 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { MatCheckboxModule } from '@angular/material';
+
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { environment } from '../environments/environment';
     MatSidenavModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatCheckboxModule,
     ServiceWorkerModule.register('ngsw-config.json', { enabled: environment.production })
   ],
   providers: [],

@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Update Card Information </h1>
+<mat-dialog-content>
+  <p>Card Holder's Full Name: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="cardUpdate.fullName">
+  </mat-form-field>
+
+  <p>Card Number: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="cardUpdate.cardNumber">
+  </mat-form-field>
+
+  <p>Expiration Date:</p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="cardUpdate.expirationDate">
+  </mat-form-field>
+  
+  <p>Security Code: </p>
+  <mat-form-field>
+    <input matInput [(ngModel)] ="cardUpdate.securityCode">
+  </mat-form-field>
+</mat-dialog-content>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-button [mat-dialog-close] = "data" (click)="onUpdateClick()" cdkFocusInitial>Update</button>
+    <button mat-button [mat-dialog-close] = "data" (click)="onRemoveClick()" cdkFocusInitial>Remove</button>
+</div>
