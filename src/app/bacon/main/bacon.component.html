@@ -18,13 +18,15 @@
     <p>{{ bacon.onHandQuantity }}</p>
   </div>
   <br>
-  <mat-form-field>
-    <mat-select #selector id="selector" placeholder="Order quantity">
-      <mat-option *ngFor="let num of select; let i = index" [value]="i + 1">{{ i + 1 }}</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <button mat-button type="button" id="cart-btn" (click)="addToCart($event)">Add To Cart</button>
-  <button mat-button type="button" id="wish-btn" (click)="addToCart($event)">Add To Wishlist</button>
+  <div id="stuff">
+    <mat-form-field>
+      <mat-select #selector id="selector" placeholder="Order quantity">
+        <mat-option *ngFor="let num of select; let i = index" [value]="i + 1">{{ i + 1 }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button mat-button type="button" id="cart-btn" (click)="addToCart($event)">Add To Cart</button>
+    <button mat-button type="button" id="wish-btn" (click)="addToCart($event)">Add To Wishlist</button>
+  </div>
   <br>
   <p>{{ chuckNorris | baconize }}</p>
 </div>

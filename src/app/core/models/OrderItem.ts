@@ -12,4 +12,5 @@ export interface OrderItem {
     itemName?: string;
     itemPrice?: number;
     item_id?: string;
+    status_id?: string;
 }
