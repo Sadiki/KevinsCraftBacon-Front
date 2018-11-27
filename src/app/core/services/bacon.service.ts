@@ -44,6 +44,6 @@ ${error.error}`
   }
 
   getWishList(): Observable<Bacon[]> {
-    return this.http.get<Bacon[]>(environment.url + 'profile/orders/save-for-later').pipe(catchError(this.handleError));1
+    return this.http.get<Bacon[]>(environment.url + 'profile/orders/save-for-later').pipe(catchError(this.handleError));
   }
 }

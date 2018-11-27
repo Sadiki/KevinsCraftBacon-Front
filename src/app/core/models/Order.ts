@@ -1,5 +1,5 @@
-import { CreatedDate } from "./CreatedDate";
-import { User } from "./User";
+import { CreatedDate } from './CreatedDate';
+import { User } from './User';
 
 export interface Order {
     orderId?: string;
@@ -16,5 +16,5 @@ export interface Order {
     shipping_status?: string;
     order_price?: string;
     delivery_method?: string;
-    shipping_price?:string;
+    shipping_price?: string;
 }
