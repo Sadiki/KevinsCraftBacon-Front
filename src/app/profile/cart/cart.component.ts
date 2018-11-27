@@ -21,44 +21,43 @@ export class CartComponent implements OnInit {
 
   selectedRow;
 
-  isOneSelected: boolean = false;
+  isOneSelected = false;
 
-  total: number = 0;
+  total = 0;
 
-  isCheckingOut: boolean = false;
+  isCheckingOut = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private userService: UserService, private router: Router) { }
-  
+
   ngOnInit() {
     this.getCartItems();
   }
 
   getCartItems() {
-    let localUsr: User = JSON.parse(localStorage.getItem('user'));
+    const localUsr: User = JSON.parse(localStorage.getItem('user'));
 
-    //localUsr.cust_id = localUsr.cust_id + '';
-    // localUsr.newsletter = localUsr.newsletter + ''; 
+    // localUsr.cust_id = localUsr.cust_id + '';
+    // localUsr.newsletter = localUsr.newsletter + '';
     this.subscription = this.userService.getCartItems(localUsr).subscribe(cart => {
-      let items: OrderItem[] = [];
-   
+      const items: OrderItem[] = [];
 
       for (let i = 0; i < cart.length; i++) {
-        let currentStatus: string = '';
-        
-
-        this.total += parseFloat(cart[i].inventory.itemPrice ) *  parseFloat(cart[i].quantity);
-
-        items.push({ id: cart[i].orderHistoryId, itemName: cart[i].inventory.itemName, quantity: cart[i].quantity, itemPrice: cart[i].inventory.itemPrice, status: 'Purchase Pending' });
-
+        const currentStatus = '';
+        this.total += cart[i].inventory.itemPrice *  parseFloat(cart[i].quantity);
+        items.push({
+          id: cart[i].orderHistoryId,
+          itemName: cart[i].inventory.itemName,
+          quantity: cart[i].quantity,
+          itemPrice: cart[i].inventory.itemPrice,
+          status: 'Purchase Pending'
+        });
       }
 
-      items.push()
+      items.push();
       this.cartDataSource = new MatTableDataSource(items);
       this.cartDataSource.paginator = this.paginator;
-
-
     });
   }
 
@@ -68,8 +67,7 @@ export class CartComponent implements OnInit {
       this.selectedRow.style.background = 'lightgrey';
       console.log(this.selectedRow);
       this.isOneSelected = true;
-    }
-    else {
+    } else {
       this.selectedRow = undefined;
       e.currentTarget.style.background = 'white';
       console.log(this.selectedRow);
@@ -77,35 +75,35 @@ export class CartComponent implements OnInit {
   }
 
   deleteRow() {
-    let itemId = this.selectedRow.querySelector('.mat-column-itemId').innerHTML.trim();
-    let statusId = this.selectedRow.querySelector('.mat-column-statusId').innerHTML.trim();
-    let custId = JSON.parse(localStorage.getItem('user')).cust_id;
+    const itemId = this.selectedRow.querySelector('.mat-column-itemId').innerHTML.trim();
+    const statusId = this.selectedRow.querySelector('.mat-column-statusId').innerHTML.trim();
+    const custId = JSON.parse(localStorage.getItem('user')).cust_id;
 
-    let orderItem: OrderItem = {};
+    const orderItem: OrderItem = {};
     orderItem.cust_id = custId + '';
-    orderItem.status_id = statusId;
+    orderItem.status = statusId;
     orderItem.item_id = itemId;
 
     console.log(orderItem);
     this.subscription = this.userService.deleteCartItem(orderItem).subscribe(itemDeleted => {
-      console.log("Deleted!");
+      console.log('Deleted!');
       this.getCartItems();
     });
   }
 
   goToCheckout() {
     this.isCheckingOut = true;
-    setTimeout(() => {this.getAllPaymentOpt()});
+    setTimeout(() => this.getAllPaymentOpt());
   }
 
-  getAllPaymentOpt(){
-    let paymentSelectElement = document.getElementById('paymentSelect');
+  getAllPaymentOpt() {
+    const paymentSelectElement = document.getElementById('paymentSelect');
 
-    let currUser = JSON.parse(localStorage.getItem('user'));
+    const currUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.userService.getAllPaymentOpts().subscribe(cards => {
-      for(let i = 0; i < cards.length; i++){
-        if(cards[i].customers.cust_id === currUser.cust_id){
-        let paymentOptionElement: HTMLOptionElement = document.createElement('option');
+      for (let i = 0; i < cards.length; i++) {
+        if (cards[i].customers.cust_id === currUser.cust_id) {
+        const paymentOptionElement: HTMLOptionElement = document.createElement('option');
 
         paymentOptionElement.value = cards[i].fullName;
         paymentOptionElement.innerText = cards[i].fullName;
@@ -113,26 +111,25 @@ export class CartComponent implements OnInit {
         paymentSelectElement.appendChild(paymentOptionElement);
         }
       }
-    }); 
+    });
   }
 
-  completeCheckout(){
+  completeCheckout() {
     this.isCheckingOut = false;
 
-    let localUsr: User = JSON.parse(localStorage.getItem('user'));
-    let orderList: Order = {};
+    const localUsr: User = JSON.parse(localStorage.getItem('user'));
+    const orderList: Order = {};
 
-    orderList.cust_id = localUsr.cust_id +'';
+    orderList.cust_id = localUsr.cust_id + '';
     orderList.shipping_status = '1';
     orderList.delivery_method = '1';
     orderList.shipping_price = '4.95';
-    orderList.order_price = this.total +'';
-    
- 
-console.log(orderList);
+    orderList.order_price = this.total + '';
+
+    console.log(orderList);
     this.subscription =  this.userService.checkout(orderList).subscribe(receipt => {
       console.log(receipt);
-      console.log('Checkout complete!')
+      console.log('Checkout complete!');
     });
 
     this.router.navigate(['/profile/confirmation']);
