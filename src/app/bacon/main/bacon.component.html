@@ -1,20 +1,30 @@
-<div id='baconItem'>
-  <img id='baconPic' />
-  Name:
-  <div id='baconName'>
-
+<div id="baconItem">
+  <img id="baconPic" [src]="bacon.itemPicture" [alt]="bacon.itemName">
+  <br>
+  <div id="baconName">
+    <p>Name:</p>
+    <p>{{ bacon.itemName }}</p>
   </div>
-  Description:
-  <div id='baconDesc'>
-
+  <div id="baconDesc">
+    <p>Description:</p>
+    <p>{{ bacon.itemDescription }}</p>
   </div>
-  Price:
-  <div id='baconPrice'>
-
+  <div id="baconPrice">
+    <p>Price:</p>
+    <p>${{ bacon.itemPrice }}</p>
   </div>
-  Amount In Stock:
-  <div id='baconQuantity'>
-
+  <div id="baconQuantity">
+    <p>Amount In Stock:</p>
+    <p>{{ bacon.onHandQuantity }}</p>
   </div>
+  <br>
+  <mat-form-field>
+    <mat-select #selector id="selector" placeholder="Order quantity">
+      <mat-option *ngFor="let num of select; let i = index" [value]="i + 1">{{ i + 1 }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button mat-button type="button" id="cart-btn" (click)="addToCart($event)">Add To Cart</button>
+  <button mat-button type="button" id="wish-btn" (click)="addToCart($event)">Add To Wishlist</button>
+  <br>
   <p>{{ chuckNorris | baconize }}</p>
 </div>
