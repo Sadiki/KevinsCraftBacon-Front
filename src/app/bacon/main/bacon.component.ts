@@ -16,7 +16,7 @@ export class BaconComponent implements OnInit, OnDestroy {
   subscription2: Subscription;
   subscription3: Subscription;
   bacon: Bacon;
-  chuckNorris: ChuckNorris;
+  chuckNorris: string;
 
   constructor(private baconService: BaconService, private route: ActivatedRoute) { }
 
@@ -25,7 +25,7 @@ export class BaconComponent implements OnInit, OnDestroy {
       this.subscription2 = this.baconService.getOneBacon(params.id).subscribe((resp) => this.bacon = resp);
     });
 
-    this.subscription3 = this.baconService.chuckNorris().subscribe((fact) => this.chuckNorris = fact);
+    this.subscription3 = this.baconService.chuckNorris().subscribe((fact) => this.chuckNorris = fact.value);
   }
 
   ngOnDestroy() {
