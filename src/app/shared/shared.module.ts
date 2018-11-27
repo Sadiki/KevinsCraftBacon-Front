@@ -11,7 +11,7 @@ import {MatTableModule} from '@angular/material/table';
 
 import { BaconizePipe } from './pipes/baconize.pipe';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule, MatSnackBarModule } from '@angular/material';
 import { ProfileComponent } from '../profile/profile.component';
 
 @NgModule({
@@ -29,6 +29,7 @@ import { ProfileComponent } from '../profile/profile.component';
     MatDialogModule,
     MatPaginatorModule,
     MatGridListModule,
+    MatSnackBarModule
   ],
   exports: [
     BaconizePipe,
@@ -40,7 +41,8 @@ import { ProfileComponent } from '../profile/profile.component';
     MatTableModule,
     MatDialogModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    MatSnackBarModule
 
   ],
   providers: [ProfileComponent]

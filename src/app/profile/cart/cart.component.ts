@@ -3,7 +3,7 @@ import { UserService } from 'src/app/core/services/user.service';
 import { User } from 'src/app/core/models/User';
 import { Subscription } from 'rxjs';
 import { OrderItem } from 'src/app/core/models/OrderItem';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatPaginator, MatTableDataSource, MatSnackBar } from '@angular/material';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/core/models/Order';
 
@@ -29,7 +29,7 @@ export class CartComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, public snackBar: MatSnackBar) { }
   
   ngOnInit() {
     this.getCartItems();
@@ -128,13 +128,28 @@ export class CartComponent implements OnInit {
     orderList.shipping_price = '4.95';
     orderList.order_price = this.total +'';
     
- 
-console.log(orderList);
     this.subscription =  this.userService.checkout(orderList).subscribe(receipt => {
       console.log(receipt);
-      console.log('Checkout complete!')
+      console.log('Checkout complete!');
+      let snackBarRef = this.snackBar.open('Payment Received!', 'Ok')
+
+      snackBarRef.afterDismissed().subscribe(() => {
+        this.router.navigate(['/profile']);
+      });
+
+      
     });
 
-    this.router.navigate(['/profile/confirmation']);
   }
+
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
+
+  navigateHome(){
+
+  }
+  
 }
