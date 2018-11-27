@@ -96,5 +96,6 @@ ${error.error}`
   providedIn: 'root'
 })
 export class LoggedInService {
-  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  userExists = (localStorage.getItem('user')) ? true : false;
+  public loggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.userExists);
 }
