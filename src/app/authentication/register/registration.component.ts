@@ -16,8 +16,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   subscription: Subscription;
   user: User = {};
 
-  isCheckedYes: boolean = true;
-  isCheckedNo: boolean = false;
+  isCheckedYes = true;
+  isCheckedNo = false;
 
 
   constructor(private loggedIn: LoggedInService,
@@ -32,18 +32,18 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.user.newsletter = '1';
   }
 
-  onCheckBoxClicked(){
-
-    if(this.isCheckedYes){
+  onCheckBoxClicked() {
+    if (this.isCheckedYes) {
       this.isCheckedYes = false;
       this.isCheckedNo = true;
       this.user.newsletter = '0';
-    }else{
+    } else {
       this.isCheckedNo = false;
       this.isCheckedYes = true;
       this.user.newsletter = '1';
     }
   }
+
   register() {
     console.log(this.user);
     this.subscription = this.userService.register(this.user).subscribe((user) => {
