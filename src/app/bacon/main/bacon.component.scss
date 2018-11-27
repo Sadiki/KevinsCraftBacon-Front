@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+
+$blue-grey: mat-color($mat-blue-grey, 700);
+$dark-grey: mat-color($mat-grey, 900);
+$light-grey: mat-color($mat-grey, 200);
+$font: 'Montserrat', sans-serif;
+
+#baconItem {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    p {
+        color: $dark-grey;
+        font-family: $font;
+        text-align: center;
+    }
+    
+    button {
+        background-color: $blue-grey;
+        color: $light-grey;
+        font-family: $font;
+        width: fit-content;
+    }
+    
+    img {
+        margin: 0 auto;
+    }
+
+    #stuff {
+        display: inline-block;
+        text-align: center;
+
+        mat-form-field {
+            //text-align: center;
+            width: fit-content;
+        }
+    }
+}

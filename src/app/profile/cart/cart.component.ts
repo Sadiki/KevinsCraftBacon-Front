@@ -47,11 +47,11 @@ export class CartComponent implements OnInit {
         const currentStatus = '';
         this.total += cart[i].inventory.itemPrice *  parseFloat(cart[i].quantity);
         items.push({
-          id: cart[i].orderHistoryId,
+          id: cart[i].inventory.itemId +'',
           itemName: cart[i].inventory.itemName,
           quantity: cart[i].quantity,
           itemPrice: cart[i].inventory.itemPrice,
-          status: 'Purchase Pending'
+          status_id: 'Purchase Pending'
         });
       }
 
@@ -81,7 +81,7 @@ export class CartComponent implements OnInit {
 
     const orderItem: OrderItem = {};
     orderItem.cust_id = custId + '';
-    orderItem.status = statusId;
+    orderItem.status_id = '1';
     orderItem.item_id = itemId;
 
     console.log(orderItem);

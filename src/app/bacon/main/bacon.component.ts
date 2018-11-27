@@ -40,9 +40,10 @@ export class BaconComponent implements OnInit, OnDestroy {
   }
 
   addToCart(event: any) {
-    this.orderItem.cust_id = JSON.parse(localStorage.getItem('user')).cust_id;
-    this.orderItem.quantity = this.quantity.value;
-    this.orderItem.inventory = this.bacon;
+    this.orderItem.cust_id = String(JSON.parse(localStorage.getItem('user')).cust_id);
+    this.orderItem.quantity = String(this.quantity.value);
+    this.orderItem.item_id = String(this.bacon.itemId);
+    console.log(this.orderItem);
 
     if (event.target.parentElement.id === 'cart-btn') {
       this.orderItem.status = '1';
@@ -61,5 +62,6 @@ export class BaconComponent implements OnInit, OnDestroy {
     this.subscription1.unsubscribe();
     this.subscription2.unsubscribe();
     this.subscription3.unsubscribe();
+    this.subscription4.unsubscribe();
   }
 }
