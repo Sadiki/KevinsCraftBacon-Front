@@ -25,7 +25,6 @@ let clickedCard: CreditCard = {};
 @Injectable()
 export class ProfileComponent implements OnInit {
 
-  usrString: string = localStorage.getItem('user');
   usrId: string;
   usrFn: string;
   usrLn: string;
@@ -80,10 +79,11 @@ export class ProfileComponent implements OnInit {
   }
   
   storeAccountInfo(){    
-    this.currUsr = JSON.parse(this.usrString);
+    this.currUsr = JSON.parse(localStorage.getItem('user'));
+
+    this.usr = this.currUsr;
 
   if(this.currUsr){
-
     this.usrId = this.currUsr.cust_id;
     this.usrFn = this.currUsr.firstName;
     this.usrLn = this.currUsr.lastName;
@@ -180,60 +180,13 @@ export class ProfileComponent implements OnInit {
 
   updateAccountInfo(){
     let localUser:User = JSON.parse(localStorage.getItem('user'));
-    if(!this.usr.city){
-      this.usr.city = localUser.city;
-    }
+ 
 
-    if(!this.usr.cust_id){
-      this.usr.cust_id = localUser.cust_id +'';
-  
-    }
-
-    if(!this.usr.email){
-      this.usr.email = localUser.email;
-    }
-
-    if(!this.usr.firstName){
-      this.usr.firstName = localUser.firstName;
-    }
-
-    if(!this.usr.lastName){
-      this.usr.lastName = localUser.lastName;
-    }
-
-    if(!this.usr.newsletter){
-      this.usr.newsletter = localUser.newsletter +'';
-    }
-
-    if(!this.usr.password){
-      this.usr.password = localUser.password;
-    }
-
-    if(!this.usr.phoneNumber){
-      this.usr.phoneNumber = localUser.phoneNumber;
-    }
-
-    if(!this.usr.state){
-      this.usr.state = localUser.state
-    }
-
-    if(!this.usr.streetAddress){
-      this.usr.streetAddress = localUser.streetAddress
-    }
-
-    if(!this.usr.username){
-      this.usr.username = localUser.username
-    }
-
-    if(!this.usr.zip){
-      this.usr.zip = localUser.zip
-    }
-
-    console.log(this.usr)
     this.subscription = this.userService.updateUser(this.usr).subscribe(user => {
       console.log("User:" + JSON.stringify(this.usr));
       localStorage.setItem('user', JSON.stringify(this.usr));
       this.currCard = this.usr;
+      this.storeAccountInfo();
       this.hideAccountInput();
       
     });
@@ -277,7 +230,6 @@ export class ProfileComponent implements OnInit {
     let localUsr: User = JSON.parse(localStorage.getItem('user'));
       for (let i = 0; i < orders.length; i++) {
         if(orders[i].customers.cust_id === localUsr.cust_id){
-        console.log(orders[i])
         ordItems.push({orderId: orders[i].orderId , cDate: orders[i].createdDate.dayOfMonth + '-' +  orders[i].createdDate.monthValue + '-' + orders[i].createdDate.year, orderStatusId: 'Purchased', orderPrice: orders[i].orderPrice});
         }
       }

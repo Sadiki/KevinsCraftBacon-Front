@@ -61,3 +61,12 @@ $font: 'Montserrat', sans-serif;
     width: 50%;
 }
 
+.acc-btns{
+    text-align: center;
+    padding-top:1%;
+}
+
+.acc-btns > button{
+    background-color:lightgrey;
+    margin-left: 1%;
+}

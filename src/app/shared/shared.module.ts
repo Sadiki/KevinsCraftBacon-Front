@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
-import { MatPaginatorModule } from '@angular/material';
+import { MatPaginatorModule, MatSnackBarModule } from '@angular/material';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 
@@ -29,6 +29,7 @@ import { ProfileComponent } from '../profile/profile.component';
     MatInputModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatTableModule
   ],
   exports: [
@@ -42,6 +43,7 @@ import { ProfileComponent } from '../profile/profile.component';
     MatInputModule,
     MatPaginatorModule,
     MatSelectModule,
+    MatSnackBarModule,
     MatTableModule
   ],
   providers: [ProfileComponent]
