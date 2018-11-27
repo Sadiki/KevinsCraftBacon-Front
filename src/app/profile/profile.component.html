@@ -97,9 +97,9 @@
         <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="createdDate">
-        <th mat-header-cell *matHeaderCellDef> Date Created </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
+      <ng-container matColumnDef="cDate">
+        <th mat-header-cell *matHeaderCellDef> Date Ordered </th>
+        <td mat-cell *matCellDef="let element"> {{element.cDate}} </td>
       </ng-container>
 
       <ng-container matColumnDef="orderStatusId">
@@ -109,7 +109,7 @@
 
       <ng-container matColumnDef="orderPrice">
         <th mat-header-cell *matHeaderCellDef> Order Price</th>
-        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.orderPrice | currency}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="pastDisplayedColumns"></tr>

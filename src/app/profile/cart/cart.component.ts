@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { OrderItem } from 'src/app/core/models/OrderItem';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { Order } from 'src/app/core/models/Order';
 
 @Component({
   selector: 'app-cart',
@@ -24,10 +25,12 @@ export class CartComponent implements OnInit {
 
   total: number = 0;
 
+  isCheckingOut: boolean = false;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private userService: UserService, private router: Router) { }
-
+  
   ngOnInit() {
     this.getCartItems();
   }
@@ -42,15 +45,13 @@ export class CartComponent implements OnInit {
    
 
       for (let i = 0; i < cart.length; i++) {
-        console.log(cart[i]);
         let currentStatus: string = '';
+        
 
-
-        this.total += parseFloat(cart[i].inventory.itemPrice);
+        this.total += parseFloat(cart[i].inventory.itemPrice ) *  parseFloat(cart[i].quantity);
 
         items.push({ id: cart[i].orderHistoryId, itemName: cart[i].inventory.itemName, quantity: cart[i].quantity, itemPrice: cart[i].inventory.itemPrice, status: 'Purchase Pending' });
 
-        console.log(items[i]);
       }
 
       items.push()
@@ -93,6 +94,47 @@ export class CartComponent implements OnInit {
   }
 
   goToCheckout() {
-    this.router.navigate(['/profile/checkout']);
+    this.isCheckingOut = true;
+    setTimeout(() => {this.getAllPaymentOpt()});
+  }
+
+  getAllPaymentOpt(){
+    let paymentSelectElement = document.getElementById('paymentSelect');
+
+    let currUser = JSON.parse(localStorage.getItem('user'));
+    this.subscription = this.userService.getAllPaymentOpts().subscribe(cards => {
+      for(let i = 0; i < cards.length; i++){
+        if(cards[i].customers.cust_id === currUser.cust_id){
+        let paymentOptionElement: HTMLOptionElement = document.createElement('option');
+
+        paymentOptionElement.value = cards[i].fullName;
+        paymentOptionElement.innerText = cards[i].fullName;
+
+        paymentSelectElement.appendChild(paymentOptionElement);
+        }
+      }
+    }); 
+  }
+
+  completeCheckout(){
+    this.isCheckingOut = false;
+
+    let localUsr: User = JSON.parse(localStorage.getItem('user'));
+    let orderList: Order = {};
+
+    orderList.cust_id = localUsr.cust_id +'';
+    orderList.shipping_status = '1';
+    orderList.delivery_method = '1';
+    orderList.shipping_price = '4.95';
+    orderList.order_price = this.total +'';
+    
+ 
+console.log(orderList);
+    this.subscription =  this.userService.checkout(orderList).subscribe(receipt => {
+      console.log(receipt);
+      console.log('Checkout complete!')
+    });
+
+    this.router.navigate(['/profile/confirmation']);
   }
 }

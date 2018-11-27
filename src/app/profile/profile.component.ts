@@ -53,7 +53,7 @@ export class ProfileComponent implements OnInit {
 
   visible: boolean = false;
 
-  pastDisplayedColumns: string[] = ['orderId', 'createdDate', 'orderStatusId', 'orderPrice'];
+  pastDisplayedColumns: string[] = ['orderId', 'cDate', 'orderStatusId', 'orderPrice'];
   wishlistDisplayedColumns: string[] = ['itemName','quantity'];
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -272,12 +272,21 @@ export class ProfileComponent implements OnInit {
   }
 
   getAllOrders(){
+    let ordItems: Order[] = [];
     this.subscription = this.userService.getAllPastOrders().subscribe(orders=>{
-      
-      this.allOrders = orders;
-      this.pastOrdersDataSource =  new MatTableDataSource(orders);
+    let localUsr: User = JSON.parse(localStorage.getItem('user'));
+      for (let i = 0; i < orders.length; i++) {
+        if(orders[i].customers.cust_id === localUsr.cust_id){
+        console.log(orders[i])
+        ordItems.push({orderId: orders[i].orderId , cDate: orders[i].createdDate.dayOfMonth + '-' +  orders[i].createdDate.monthValue + '-' + orders[i].createdDate.year, orderStatusId: 'Purchased', orderPrice: orders[i].orderPrice});
+        }
+      }
+      this.pastOrdersDataSource =  new MatTableDataSource(ordItems);
       this.pastOrdersDataSource.paginator = this.paginator;
       })
+
+      
+    
     }
 
   getAllPaymentOpt(){
@@ -404,7 +413,6 @@ getUserWishList(){
   //localUsr.cust_id = localUsr.cust_id + '';
  // localUsr.newsletter = localUsr.newsletter + '';
   this.subscription = this.userService.getWishList(localUsr).subscribe(wishlist=>{
-    console.log(wishlist);
     let items: OrderItem[] = [];
     for(let i = 0; i < wishlist.length; i++){
       items.push( {itemName: wishlist[i].inventory.itemName, quantity: wishlist[i].quantity });

@@ -24,12 +24,12 @@
             <th mat-header-cell *matHeaderCellDef> Status </th>
             <td mat-cell *matCellDef="let element"> {{element.status}} </td>
             <td mat-footer-cell *matFooterCellDef> </td>
-          </ng-container>
+        </ng-container>
 
-          
+
         <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef> Price </th>
-            <td mat-cell *matCellDef="let element"> {{element.itemPrice  | currency}} </td>
+            <td mat-cell *matCellDef="let element"> {{element.itemPrice | currency}} </td>
             <td mat-footer-cell *matFooterCellDef> {{total | currency}} </td>
         </ng-container>
 
@@ -37,11 +37,23 @@
 
 
         <tr mat-row *matRowDef="let row; columns: cartDisplayedColumns;" (click)="selectRow($event)"></tr>
-        <tr mat-footer-row *matFooterRowDef="cartDisplayedColumns" ></tr>
+        <tr mat-footer-row *matFooterRowDef="cartDisplayedColumns"></tr>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
     <mat-card>
-    <button mat-flat-button type="button" (click)='deleteRow()'>Remove From Cart</button>
-    <button mat-flat-button type="button" (click)='goToCheckout()'>Checkout Cart</button>
+        <button mat-flat-button type="button" (click)='deleteRow()' *ngIf='!isCheckingOut'>Remove From Cart</button>
+        <button mat-flat-button type="button" (click)='goToCheckout()' *ngIf='!isCheckingOut'>Checkout Cart</button>
     </mat-card>
+
+    <div *ngIf='isCheckingOut'>
+        <h4>Select Card Payment</h4>
+        <mat-form-field>
+            <select matNativeControl required id='paymentSelect'>
+            </select>
+        </mat-form-field>
+
+        <button mat-flat-button type="button" (click)='completeCheckout()' *ngIf='isCheckingOut'>Checkout Cart</button>
+    </div>
+
+    
 </div>
