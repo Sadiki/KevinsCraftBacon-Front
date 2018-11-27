@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { CartComponent } from './profile/cart/cart.component';
 
 const routes: Routes = [
     { path: '', loadChildren: './browse/browse.module#BrowseModule', pathMatch: 'full' },
@@ -8,7 +9,6 @@ const routes: Routes = [
     { path: 'bacon', loadChildren: './bacon/bacon.module#BaconModule' },
     { path: 'profile', loadChildren: './profile/profile.module#ProfileModule' },
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-    { path: 'shipping', loadChildren: './shipping/shipping.module#ShippingModule'},
     { path: '**', redirectTo: '' }
 ];
 

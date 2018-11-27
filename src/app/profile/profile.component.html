@@ -98,13 +98,13 @@
       </ng-container>
 
       <ng-container matColumnDef="createdDate">
-        <th mat-header-cell *matHeaderCellDef> Item Ordered </th>
+        <th mat-header-cell *matHeaderCellDef> Date Created </th>
         <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="orderUpdate">
+      <ng-container matColumnDef="orderStatusId">
         <th mat-header-cell *matHeaderCellDef> Order Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.orderUpdate}} </td>
+        <td mat-cell *matCellDef="let element"> {{element.orderStatusId}} </td>
       </ng-container>
 
       <ng-container matColumnDef="orderPrice">
@@ -120,24 +120,14 @@
   <div id='wishlist' *ngIf="showView == 'wishlist'" class="mat-elevation-z8">
     <table mat-table [dataSource]="wishlistDataSource" >
 
-      <ng-container matColumnDef="orderId">
-        <th mat-header-cell *matHeaderCellDef> Order ID </th>
-        <td mat-cell *matCellDef="let element"> {{element.orderId}} </td>
+      <ng-container matColumnDef="itemName">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.itemName}} </td>
       </ng-container>
 
-      <ng-container matColumnDef="createdDate">
-        <th mat-header-cell *matHeaderCellDef> Item Ordered </th>
-        <td mat-cell *matCellDef="let element"> {{element.createdDate}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="orderUpdate">
-        <th mat-header-cell *matHeaderCellDef> Order Status </th>
-        <td mat-cell *matCellDef="let element"> {{element.orderUpdate}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="orderPrice">
-        <th mat-header-cell *matHeaderCellDef> Order Price</th>
-        <td mat-cell *matCellDef="let element"> {{element.orderPrice}} </td>
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="wishlistDisplayedColumns"></tr>

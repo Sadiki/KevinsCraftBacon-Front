@@ -40,7 +40,7 @@ ${error.error}`
   }
 
   chuckNorris() {
-    return this.http.get<ChuckNorris>('https://api.chucknorris.io/jokes/random');
+    return this.http.get<ChuckNorris>('https://api.chucknorris.io/jokes/random?category=dev');
   }
 
   getWishList(): Observable<Bacon[]> {

@@ -1,10 +1,15 @@
+import { Inventory } from '../models/Inventory'
 export interface OrderItem {
-    id: number;
-    cust_id: number;
-    quantity: number;
-    item_id: number;
-    status: number;
-    order_id: number;
-    special_order_id: number;
-
+    id?: string;
+    cust_id?: string;
+    quantity?: string;
+    inventory?: Inventory;
+    status?: string;
+    order_id?: string;
+    special_order_id?: string;
+    orderHistoryId?: string;
+    itemName?: string;
+    itemPrice?: string;
+    item_id?: string;
+    status_id?: string;
 }

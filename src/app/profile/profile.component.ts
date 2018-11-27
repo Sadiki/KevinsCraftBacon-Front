@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Order } from '../core/models/Order';
 import { MatPaginator } from '@angular/material/';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { OrderItem } from '../core/models/OrderItem';
 
 let orderData = [];
 
@@ -52,8 +53,8 @@ export class ProfileComponent implements OnInit {
 
   visible: boolean = false;
 
-  pastDisplayedColumns: string[] = ['orderId', 'createdDate', 'orderUpdate', 'orderPrice'];
-  wishlistDisplayedColumns: string[] = [];
+  pastDisplayedColumns: string[] = ['orderId', 'createdDate', 'orderStatusId', 'orderPrice'];
+  wishlistDisplayedColumns: string[] = ['itemName','quantity'];
   
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
@@ -65,9 +66,9 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     globalDialog = this.dialog;
-    this.getAllOrders();
-
     this.storeAccountInfo();
+    this.getAllOrders();
+    this.getUserWishList();
     this.showView = 'accInfo';
     
   }
@@ -140,10 +141,8 @@ export class ProfileComponent implements OnInit {
       this.hidePaginator = false;
       this.showView = 'pastOrders';
 
-      //this.getAllOrders();
-
     }else {
-
+      this.showView = 'wishlist';
     }
   }
 
@@ -186,8 +185,8 @@ export class ProfileComponent implements OnInit {
     }
 
     if(!this.usr.cust_id){
-      this.usr.cust_id = localUser.cust_id;
-      console.log('id');
+      this.usr.cust_id = localUser.cust_id +'';
+  
     }
 
     if(!this.usr.email){
@@ -203,7 +202,7 @@ export class ProfileComponent implements OnInit {
     }
 
     if(!this.usr.newsletter){
-      this.usr.newsletter = localUser.newsletter;
+      this.usr.newsletter = localUser.newsletter +'';
     }
 
     if(!this.usr.password){
@@ -230,6 +229,7 @@ export class ProfileComponent implements OnInit {
       this.usr.zip = localUser.zip
     }
 
+    console.log(this.usr)
     this.subscription = this.userService.updateUser(this.usr).subscribe(user => {
       console.log("User:" + JSON.stringify(this.usr));
       localStorage.setItem('user', JSON.stringify(this.usr));
@@ -399,9 +399,20 @@ cleanUp(){
 }
 
 getUserWishList(){
-  this.subscription = this.userService.getWishList(this.currUsr).subscribe(wishlist=>{
-    this.wishlistDataSource = new MatTableDataSource(wishlist);
-    this.pastOrdersDataSource.paginator = this.paginator;
+  let localUsr: User = JSON.parse(localStorage.getItem('user'));
+
+  //localUsr.cust_id = localUsr.cust_id + '';
+ // localUsr.newsletter = localUsr.newsletter + '';
+  this.subscription = this.userService.getWishList(localUsr).subscribe(wishlist=>{
+    console.log(wishlist);
+    let items: OrderItem[] = [];
+    for(let i = 0; i < wishlist.length; i++){
+      items.push( {itemName: wishlist[i].inventory.itemName, quantity: wishlist[i].quantity });
+      this.wishlistDataSource = new MatTableDataSource(items);
+      this.wishlistDataSource.paginator = this.paginator;
+      console.log(items[i]);
+        }
+
   });
 
 }

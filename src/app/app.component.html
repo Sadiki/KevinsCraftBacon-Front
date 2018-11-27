@@ -24,7 +24,7 @@
                 <div id="register-nav" class="nav-item">Register</div>
             </a>
             <br *ngIf="!sessionUser">
-            <a mat-button id="cart" matTooltip="Cart (Alt + 4)" matTooltipPosition="above" routerLink="/bacon/cart" *ngIf="sessionUser">
+            <a mat-button id="cart" matTooltip="Cart (Alt + 4)" matTooltipPosition="above" routerLink="/profile/cart" *ngIf="sessionUser">
                 <div id="cart-nav" class="nav-item">Cart</div>
             </a>
             <br *ngIf="sessionUser">
