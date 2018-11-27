@@ -87,6 +87,10 @@ ${error.error}`
     return this.http.post<OrderItem>(environment.url + 'profile/orders/delete-item', orderItem, httpOptions ).pipe(catchError(this.handleError));
   }
 
+  checkout(orderItem :Order): Observable<Order>{
+    return this.http.post<Order>(environment.url + 'profile/orders/add', orderItem, httpOptions ).pipe(catchError(this.handleError));
+  }
+
 }
 
 @Injectable({
