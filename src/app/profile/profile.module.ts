@@ -10,6 +10,7 @@ import { ProfileComponent, ProfileDialogComponent, PaymentDialogComponent } from
 import { SharedModule } from '../shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   entryComponents: [ ProfileDialogComponent, PaymentDialogComponent],
@@ -20,7 +21,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     WishlistComponent,
     ProfileComponent,
     ProfileDialogComponent,
-    PaymentDialogComponent
+    PaymentDialogComponent,
+    CheckoutComponent
     
   ],
   imports: [

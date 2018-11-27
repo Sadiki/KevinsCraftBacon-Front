@@ -52,9 +52,7 @@ ${error.error}`
   }
 
   updateUser(user: User): Observable<User>{
-    let users : Observable<User>  = this.http.put<User>(environment.url + 'customer/update', user, httpOptions).pipe(catchError(this.handleError));
-    console.log(users);
-    return users
+    return this.http.put<User>(environment.url + 'customer/update', user, httpOptions).pipe(catchError(this.handleError));
   }
 
   getAllPaymentOpts(): Observable<CreditCard[]> {
@@ -74,12 +72,21 @@ ${error.error}`
   }
 
   getAllPastOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(environment.url + '/profile/orders').pipe(catchError(this.handleError));
+    return this.http.get<Order[]>(environment.url + 'profile/orders').pipe(catchError(this.handleError));
   }
 
   getWishList(user: User): Observable<OrderItem[]>{
-    return this.http.post<OrderItem[]>(environment.url + '/profile/wishlist', user, httpOptions ).pipe(catchError(this.handleError));
+    return this.http.post<OrderItem[]>(environment.url + 'profile/wishlist', user, httpOptions ).pipe(catchError(this.handleError));
   }
+
+  getCartItems(user: User): Observable<OrderItem[]>{
+    return this.http.post<OrderItem[]>(environment.url + 'profile/cart', user, httpOptions ).pipe(catchError(this.handleError));
+  }
+
+  deleteCartItem(orderItem :OrderItem): Observable<OrderItem>{
+    return this.http.post<OrderItem>(environment.url + 'profile/orders/delete-item', orderItem, httpOptions ).pipe(catchError(this.handleError));
+  }
+
 }
 
 @Injectable({
