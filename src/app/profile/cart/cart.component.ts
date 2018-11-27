@@ -30,7 +30,7 @@ export class CartComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private userService: UserService, private router: Router, public snackBar: MatSnackBar) { }
-  
+
   ngOnInit() {
     this.getCartItems();
   }
@@ -47,7 +47,7 @@ export class CartComponent implements OnInit {
         const currentStatus = '';
         this.total += cart[i].inventory.itemPrice *  parseFloat(cart[i].quantity);
         items.push({
-          id: cart[i].inventory.itemId +'',
+          id: cart[i].inventory.itemId + '',
           itemName: cart[i].inventory.itemName,
           quantity: cart[i].quantity,
           itemPrice: cart[i].inventory.itemPrice,
@@ -124,26 +124,20 @@ export class CartComponent implements OnInit {
     orderList.shipping_status = '1';
     orderList.delivery_method = '1';
     orderList.shipping_price = '4.95';
-    orderList.order_price = this.total +'';
-    
+    orderList.order_price = this.total + '';
+
     this.subscription =  this.userService.checkout(orderList).subscribe(receipt => {
       console.log(receipt);
       console.log('Checkout complete!');
-      let snackBarRef = this.snackBar.open('Payment Received!', 'Ok')
+      const snackBarRef = this.snackBar.open('Payment Received!', 'Ok');
 
       snackBarRef.afterDismissed().subscribe(() => {
         this.router.navigate(['/profile']);
       });
 
-      
     orderList.order_price = this.total + '';
 
     console.log(orderList);
-    this.subscription =  this.userService.checkout(orderList).subscribe(receipt => {
-      console.log(receipt);
-      console.log('Checkout complete!');
-    });
-
   });
 }
 
@@ -153,8 +147,7 @@ export class CartComponent implements OnInit {
     });
   }
 
-  navigateHome(){
+  navigateHome() {
 
   }
-  
 }
