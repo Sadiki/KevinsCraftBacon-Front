@@ -27,10 +27,7 @@
             <a mat-button id="cart" matTooltip="Cart (Alt + 4)" matTooltipPosition="above" routerLink="/profile/cart" *ngIf="sessionUser">
                 <div id="cart-nav" class="nav-item">Cart</div>
             </a>
-            <br *ngIf="sessionUser">
-            <a mat-button id="orders" matTooltip="Orders (Alt + 5)" matTooltipPosition="above" routerLink="/profile/orders" *ngIf="sessionUser">
-                <div id="orders-nav" class="nav-item">Orders</div>
-            </a>
+         
             <br *ngIf="sessionUser">
             <a mat-button id="logout" matTooltip="Logout (Alt + 6)" matTooltipPosition="above" routerLink="/auth/logout" *ngIf="sessionUser">
                 <div id="logout-nav" class="nav-item">Logout</div>

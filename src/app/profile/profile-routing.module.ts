@@ -5,6 +5,7 @@ import { PaymentComponent } from './payment/payment.component';
 import { ProfileComponent } from './profile.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 
 
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'orders', loadChildren: './orders/orders.module#OrdersModule' },
   { path: 'payment', component: PaymentComponent },
   { path: 'wishlist', component: WishlistComponent },
-  { path: 'checkout', component: CheckoutComponent},
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'confirmation', component:ConfirmationComponent },
   { path: '**', redirectTo: '' }
 ];
 
